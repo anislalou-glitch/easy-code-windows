@@ -152,6 +152,7 @@ button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent
 .get-app-t b { display: block; color: var(--ink); font-size: 15px; font-weight: 600; }
 .play-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: #000; color: #fff; border: 1px solid rgba(255,255,255,.25); font: 600 14px/1 inherit; text-decoration: none; white-space: nowrap; }
 .play-btn svg { width: 18px; height: 18px; }
+.get-app-b { display: flex; flex-wrap: wrap; gap: 10px; }
 .play-btn.soon { opacity: .7; cursor: default; }
 
 /* ---- Question ---- */
@@ -2754,7 +2755,9 @@ var SCENES = (function () {
     var btn = PLAY_URL
       ? '<a class="play-btn" href="' + esc(PLAY_URL) + '" target="_blank" rel="noopener">' + ic + 'Installer sur Google Play</a>'
       : '<span class="play-btn soon" aria-disabled="true">' + ic + 'Bientôt sur Google Play</span>';
-    return '<section class="get-app" aria-label="Application Android"><p class="get-app-t"><b>L\'appli Easy Code</b>Révise sans connexion sur ton téléphone Android.</p>' + btn + '</section>';
+    var wic = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5.5l7.5-1v7H3zm8.5-1.2L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>';
+    var win = '<a class="play-btn" href="' + esc(WIN_URL) + '" target="_blank" rel="noopener">' + wic + 'Télécharger pour Windows</a>';
+    return '<section class="get-app" aria-label="Applications Easy Code"><p class="get-app-t"><b>L\'appli Easy Code</b>Révise sans connexion, sur ton téléphone Android ou ton ordinateur Windows.</p><span class="get-app-b">' + btn + win + '</span></section>';
   }
 
   function renderHome() {
@@ -3046,6 +3049,8 @@ var SCENES = (function () {
   var CONTACT = 'lalouanis932@gmail.com';
   /* Lien de la fiche Google Play : laisser vide tant que l'appli n'est pas publique (le bouton affiche alors « Bientôt »). */
   var PLAY_URL = '';
+  /* Installeur Windows (dernière version publiée sur GitHub). */
+  var WIN_URL = 'https://github.com/anislalou-glitch/easy-code-windows/releases/latest/download/Easy-Code-Setup.exe';
   var LEGAL_DATE = '12 novembre 2026';
   var LEGAL = [
     ['mentions-legales', 'Mentions légales'],
