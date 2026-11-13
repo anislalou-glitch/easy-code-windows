@@ -405,6 +405,15 @@ button, label, input { touch-action: manipulation; }
 .nojs { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 .nojs h1 { font-family: var(--f-disp); font-size: 28px; margin: 0; }
 .nojs p { margin: 0; }
+.acct { display: grid; gap: 12px; }
+.acct label { display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); font-weight: 500; }
+.acct input { background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; min-height: 50px; padding: 0 14px; font: inherit; font-size: 16px; width: 100%; box-sizing: border-box; }
+.acct input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.acct .bar { display: flex; gap: 10px; flex-wrap: wrap; }
+.acct-msg { font-size: 14px; margin: 0; }
+.acct-msg.ko { color: var(--bad); }
+.acct-msg.ok { color: var(--good); }
+.acct-who { overflow-wrap: anywhere; }
 </style>
 </head><body>
 <noscript><div class="nojs"><h1>Easy Code</h1><p>Easy Code est un site d'entraînement au code de la route, voiture et moto : séries par thème, examens blancs de 40 questions et suivi de progression.</p><p>Le site a besoin de JavaScript pour afficher les questions. Active JavaScript dans ton navigateur, puis recharge la page.</p><p>Site personnel édité par Anis Lalou, hébergé par Anthropic (claude.ai). Aucun cookie, aucune publicité, aucune mesure d'audience. Pages légales : #mentions-legales, #confidentialite, #cookies, #conditions, #abonnement.</p></div></noscript>
@@ -2515,6 +2524,7 @@ var SCENES = (function () {
   }
 
   function syncText() {
+    if (auth) return cloud.state === 'error' ? 'Synchronisation en attente : elle reprendra à la prochaine connexion Internet.' : 'Ta progression est sauvegardée sur ton compte Easy Code.';
     return cloud.state === 'cloud'
       ? 'Ta progression est enregistrée sur ton compte et suit ton téléphone.'
       : 'Ta progression est enregistrée sur cet appareil.';
@@ -2522,6 +2532,188 @@ var SCENES = (function () {
   function renderSync() {
     var el = document.getElementById('sync');
     if (el) el.textContent = syncText();
+  }
+
+  /* ---------- Compte Easy Code (Firebase, appelé par ses API web) ----------
+     Les applis Android et Windows utilisent un compte Easy Code (e-mail et mot de passe).
+     La progression est copiée dans Firestore, dans le document users/{uid} du joueur ;
+     les règles de sécurité n'autorisent chacun qu'à son propre document. */
+  var FB = {
+    key: 'AIzaSyDARv51aatci3gu9rQfE36CMVcWDLxcBeU',
+    project: 'easy-code-6dc4a'
+  };
+  var AUTH_KEY = 'easycode-auth';
+  var auth = null;   // { uid, email, idToken, refreshToken, exp }
+  try { auth = JSON.parse(localStorage.getItem(AUTH_KEY) || 'null'); } catch (e) { auth = null; }
+  function saveAuth() { try { if (auth) localStorage.setItem(AUTH_KEY, JSON.stringify(auth)); else localStorage.removeItem(AUTH_KEY); } catch (e) {} }
+
+  function fbErr(code) {
+    code = String(code || '');
+    if (/EMAIL_EXISTS/.test(code)) return 'Un compte existe déjà avec cette adresse. Connecte-toi plutôt.';
+    if (/INVALID_LOGIN_CREDENTIALS|INVALID_PASSWORD|EMAIL_NOT_FOUND/.test(code)) return 'Adresse e-mail ou mot de passe incorrect.';
+    if (/WEAK_PASSWORD/.test(code)) return 'Mot de passe trop court : 6 caractères au minimum.';
+    if (/INVALID_EMAIL|MISSING_EMAIL/.test(code)) return 'Cette adresse e-mail n\'est pas valide.';
+    if (/MISSING_PASSWORD/.test(code)) return 'Saisis ton mot de passe.';
+    if (/TOO_MANY_ATTEMPTS/.test(code)) return 'Trop d\'essais. Réessaie dans quelques minutes.';
+    if (/USER_DISABLED/.test(code)) return 'Ce compte a été désactivé.';
+    if (/NETWORK|Failed to fetch|TypeError/.test(code)) return 'Pas de connexion Internet. Réessaie quand tu es connecté.';
+    return 'Une erreur est survenue. Réessaie.';
+  }
+  function fbPost(url, body) {
+    return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Firebase-Locale': 'fr' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error((j.error && j.error.message) || 'HTTP ' + r.status); return j; }); },
+        function () { throw new Error('NETWORK'); });
+  }
+  function idt(path) { return 'https://identitytoolkit.googleapis.com/v1/accounts:' + path + '?key=' + FB.key; }
+  function setSession(j) {
+    auth = { uid: j.localId || j.user_id, email: j.email || (auth && auth.email), idToken: j.idToken || j.id_token, refreshToken: j.refreshToken || j.refresh_token,
+      exp: Date.now() + (parseInt(j.expiresIn || j.expires_in, 10) || 3600) * 1000 - 60000 };
+    saveAuth();
+  }
+  function token() {
+    if (!auth) return Promise.reject(new Error('NO_AUTH'));
+    if (auth.exp > Date.now()) return Promise.resolve(auth.idToken);
+    return fetch('https://securetoken.googleapis.com/v1/token?key=' + FB.key, {
+      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'grant_type=refresh_token&refresh_token=' + encodeURIComponent(auth.refreshToken)
+    }).then(function (r) { return r.json().then(function (j) {
+      if (!r.ok) { var m = (j.error && j.error.message) || ''; if (/TOKEN_EXPIRED|USER_NOT_FOUND|USER_DISABLED|INVALID_REFRESH_TOKEN/.test(m)) signOut(true); throw new Error(m || 'HTTP'); }
+      setSession(j); return auth.idToken; }); }, function () { throw new Error('NETWORK'); });
+  }
+  /* Document Firestore du joueur, avec la même interface que l'espace de stockage du site */
+  function fbDoc() {
+    var url = function () { return 'https://firestore.googleapis.com/v1/projects/' + FB.project + '/databases/(default)/documents/users/' + auth.uid; };
+    function call(method, body) {
+      return token().then(function (t) {
+        return fetch(url(), { method: method, headers: { 'Authorization': 'Bearer ' + t, 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+      });
+    }
+    return {
+      get: function () {
+        return call('GET').then(function (r) {
+          if (r.status === 404) return { exists: false, data: function () { return null; } };
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json().then(function (j) {
+            var d = null;
+            try { d = JSON.parse(j.fields.data.stringValue); } catch (e) {}
+            return { exists: !!d, data: function () { return d; } };
+          });
+        });
+      },
+      set: function (obj) {
+        return call('PATCH', { fields: { data: { stringValue: JSON.stringify(obj) }, u: { integerValue: String(obj.u || 0) } } })
+          .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); });
+      },
+      delete: function () { return call('DELETE').then(function (r) { if (!r.ok && r.status !== 404) throw new Error('HTTP ' + r.status); }); }
+    };
+  }
+  /* Fusionne deux progressions : on garde, pour chaque question, la plus fournie, et tous les examens */
+  function mergeState(a, b) {
+    var m = Object.assign(blank(), (a.u || 0) >= (b.u || 0) ? a : b);
+    m.q = {}; [b.q || {}, a.q || {}].forEach(function (src) {
+      Object.keys(src).forEach(function (k) { var x = src[k], y = m.q[k]; if (!y || (x && x[0] > y[0])) m.q[k] = x; });
+    });
+    m.err = Object.assign({}, b.err || {}, a.err || {});
+    var seen = {}; m.exams = (a.exams || []).concat(b.exams || []).filter(function (e) { var k = e.t + '|' + e.veh; if (seen[k]) return false; seen[k] = 1; return true; })
+      .sort(function (x, y) { return x.t - y.t; });
+    m.u = Math.max(a.u || 0, b.u || 0, 1);
+    return m;
+  }
+  function attachAccount() {
+    if (!auth) return Promise.resolve();
+    cloud.doc = fbDoc();
+    cloud.state = 'sync';
+    return cloud.doc.get().then(function (snap) {
+      var d = snap.exists ? snap.data() : null;
+      if (d && d.v === 1) {
+        S = mergeState(S, d);
+        saveLocal();
+        if (view === 'home') render();
+      }
+      cloud.state = 'cloud';
+      pushCloud();
+      renderSync();
+    }, function () { cloud.state = 'error'; renderSync(); });
+  }
+  function signOut(silent) {
+    clearTimeout(cloud.timer);
+    auth = null; saveAuth();
+    cloud.doc = null; cloud.state = 'local';
+    if (!silent && view === 'account') render();
+    renderSync();
+  }
+  function initAccount() { if (auth) attachAccount(); }
+
+  var acct = { busy: false, msg: '', ok: false, mode: 'in', delAsk: false };
+  function acctMsg(m, ok) { acct.busy = false; acct.msg = m; acct.ok = !!ok; render(); }
+  function acctVal(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function acctLogin(create) {
+    var email = acctVal('ac-mail'), pw = (document.getElementById('ac-pw') || {}).value || '';
+    if (!email) return acctMsg('Saisis ton adresse e-mail.');
+    if (pw.length < 6) return acctMsg(create ? 'Choisis un mot de passe de 6 caractères au minimum.' : 'Saisis ton mot de passe.');
+    acct.busy = true; acct.msg = ''; render();
+    fbPost(idt(create ? 'signUp' : 'signInWithPassword'), { email: email, password: pw, returnSecureToken: true }).then(function (j) {
+      setSession(j);
+      return attachAccount();
+    }).then(function () {
+      acctMsg(create ? 'Compte créé. Ta progression est maintenant sauvegardée en ligne.' : 'Connecté. Ta progression est synchronisée.', true);
+    }, function (e) { acctMsg(fbErr(e && e.message)); });
+  }
+  function acctReset() {
+    var email = acctVal('ac-mail');
+    if (!email) return acctMsg('Saisis d\'abord ton adresse e-mail, puis appuie sur « Mot de passe oublié ».');
+    acct.busy = true; render();
+    fbPost(idt('sendOobCode'), { requestType: 'PASSWORD_RESET', email: email }).then(function () {
+      acctMsg('Si un compte existe pour cette adresse, un e-mail pour choisir un nouveau mot de passe vient d\'être envoyé.', true);
+    }, function (e) { var m = e && e.message; acctMsg(/EMAIL_NOT_FOUND/.test(m) ? 'Si un compte existe pour cette adresse, un e-mail pour choisir un nouveau mot de passe vient d\'être envoyé.' : fbErr(m), /EMAIL_NOT_FOUND/.test(m)); });
+  }
+  function acctDelete() {
+    var pw = (document.getElementById('ac-pw2') || {}).value || '';
+    if (!pw) return acctMsg('Saisis ton mot de passe pour confirmer.');
+    acct.busy = true; render();
+    var email = auth.email;
+    fbPost(idt('signInWithPassword'), { email: email, password: pw, returnSecureToken: true }).then(function (j) {
+      setSession(j);
+      return fbDoc().delete().then(function () { return fbPost(idt('delete'), { idToken: auth.idToken }); });
+    }).then(function () {
+      acct.delAsk = false;
+      signOut(true);
+      acctMsg('Ton compte et sa copie en ligne ont été supprimés. Ta progression reste sur cet appareil.', true);
+    }, function (e) { acctMsg(fbErr(e && e.message)); });
+  }
+  function openAccount() { stopTimer(); sess = null; view = 'account'; acct.msg = ''; acct.delAsk = false; render(); anim('rise'); window.scrollTo(0, 0); }
+
+  function renderAccount() {
+    var dis = acct.busy ? ' disabled' : '';
+    var h = '<div class="qtop"><button class="link" data-act="home">← Retour</button><span class="qlab"></span><span></span></div>';
+    h += '<h1 class="page-h" id="acct-h">Mon compte</h1>';
+    var msg = acct.msg ? '<p class="acct-msg ' + (acct.ok ? 'ok' : 'ko') + '" role="' + (acct.ok ? 'status' : 'alert') + '">' + esc(acct.msg) + '</p>' : '';
+    if (auth) {
+      h += '<section class="exam acct" aria-labelledby="acct-h"><p class="kick">Connecté</p><p class="acct-who"><b>' + esc(auth.email || '') + '</b></p>' +
+        '<p class="exam-d">' + esc(cloud.state === 'error' ? 'La synchronisation a échoué. Elle reprendra à la prochaine connexion Internet.' : 'Ta progression est sauvegardée en ligne. Connecte-toi avec ce compte sur un autre appareil pour la retrouver.') + '</p>' +
+        msg + '<div class="bar"><button class="btn alt" data-act="acct-out"' + dis + '>Se déconnecter</button></div></section>';
+      h += '<section class="card acct"><h3>Supprimer mon compte</h3>';
+      if (acct.delAsk) {
+        h += '<p class="exam-d">Ton compte et la copie en ligne de ta progression seront supprimés définitivement. La progression enregistrée sur cet appareil est conservée.</p>' +
+          '<label>Mot de passe<input id="ac-pw2" type="password" autocomplete="current-password"></label>' +
+          '<div class="bar"><button class="btn alt" data-act="acct-del-no"' + dis + '>Annuler</button><button class="btn" data-act="acct-del-yes"' + dis + '>Supprimer définitivement</button></div>';
+      } else {
+        h += '<p class="exam-d">Tu peux supprimer ton compte à tout moment.</p><div class="bar"><button class="btn alt" data-act="acct-del"' + dis + '>Supprimer mon compte</button></div>';
+      }
+      h += '</section>';
+    } else {
+      var create = acct.mode === 'up';
+      h += '<section class="exam acct" aria-labelledby="acct-h"><p class="kick">' + (create ? 'Créer un compte' : 'Se connecter') + '</p>' +
+        '<p class="exam-d">Un compte sauvegarde ta progression en ligne et te permet de la retrouver sur ton téléphone et ton ordinateur. Il est facultatif.</p>' +
+        '<label>Adresse e-mail<input id="ac-mail" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" value="' + esc(acct.mail || '') + '"></label>' +
+        '<label>Mot de passe' + (create ? ' (6 caractères au minimum)' : '') + '<input id="ac-pw" type="password" autocomplete="' + (create ? 'new-password' : 'current-password') + '"></label>' +
+        msg +
+        '<button class="btn-go" data-act="' + (create ? 'acct-up' : 'acct-in') + '"' + dis + '>' + (acct.busy ? 'Un instant…' : (create ? 'Créer mon compte' : 'Se connecter')) + '</button>' +
+        '<div class="bar"><button class="link" data-act="acct-mode">' + (create ? 'J\'ai déjà un compte' : 'Créer un compte') + '</button>' +
+        (create ? '' : '<button class="link" data-act="acct-reset">Mot de passe oublié ?</button>') + '</div></section>';
+      h += '<p class="foot">En créant un compte, ton adresse e-mail et ta progression sont enregistrées chez Google Firebase, en Europe. Voir ' + legalLink('confidentialite', 'la page Confidentialité') + '.</p>';
+    }
+    return h;
   }
 
   /* ---------- Outils ---------- */
@@ -2816,6 +3008,8 @@ var SCENES = (function () {
         '<div class="stat"><dt>Questions vues</dt><dd style="white-space:nowrap">' + seen + '<small>\u202f/\u202f' + P.length + '</small></dd></div>' +
         '<div class="stat"><dt>Examens passés</dt><dd>' + allEx.length + '</dd></div></dl></section>';
       h += '<section class="card"><h3>Derniers examens ' + (moto ? 'moto' : 'voiture') + '</h3>' + chartHTML(exams) + '</section>';
+      if (IS_APP) h += '<section class="card list"><button class="row" data-act="account"><span class="row-main"><span class="row-t">' + (auth ? 'Mon compte' : 'Créer un compte ou se connecter') + '</span><span class="row-s acct-who">' +
+        esc(auth ? auth.email : 'Sauvegarde ta progression et retrouve-la sur tous tes appareils') + '</span></span><span class="chev" aria-hidden="true">›</span></button></section>';
       h += '<p class="foot" id="sync">' + esc(syncText()) + '</p>';
       h += '<label class="chk snd"><input type="checkbox" id="snd-on"' + (SND.isOn() ? ' checked' : '') + '><span><b>Sons.</b> Un petit son au toucher, à la correction et à la fin d\'un examen.</span></label>';
       h += wipeHTML();
@@ -2944,6 +3138,7 @@ var SCENES = (function () {
     else if (view === 'quiz') renderQuizView();
     else if (view === 'premium') app.innerHTML = renderPremium();
     else if (view === 'legal') app.innerHTML = renderLegal();
+    else if (view === 'account') app.innerHTML = renderAccount();
     else app.innerHTML = renderResult();
 
     if (view === 'quiz') {
@@ -3050,7 +3245,7 @@ var SCENES = (function () {
   var PLAY_URL = '';
   /* Installeur Windows (dernière version publiée sur GitHub). */
   var WIN_URL = 'https://github.com/anislalou-glitch/easy-code-windows/releases/latest/download/Easy-Code-Setup.exe';
-  var LEGAL_DATE = '12 novembre 2026';
+  var LEGAL_DATE = '13 novembre 2026';
   var LEGAL = [
     ['mentions-legales', 'Mentions légales'],
     ['confidentialite', 'Confidentialité'],
@@ -3141,7 +3336,7 @@ var SCENES = (function () {
     },
 
     'confidentialite': function () {
-      return '<p class="lead">Easy Code fonctionne sans compte, sans formulaire et sans publicité. Il n\'enregistre que ce qui sert à suivre ta progression.</p>' +
+      return '<p class="lead">' + (IS_APP ? 'Easy Code fonctionne sans publicité, et le compte est facultatif. Il n\'enregistre que ce qui sert à suivre ta progression et, si tu en crées un, à faire fonctionner ton compte.' : 'Easy Code fonctionne sans compte, sans formulaire et sans publicité. Il n\'enregistre que ce qui sert à suivre ta progression.') + '</p>' +
         '<h3>Responsable du traitement</h3>' +
         '<p>' + OWNER + ', éditeur du site. Contact : ' + contactHTML() + '.</p>' +
         '<h3>Données enregistrées</h3>' +
@@ -3151,19 +3346,24 @@ var SCENES = (function () {
         '<li><b>L\'état Premium du mode aperçu</b>, tant que le paiement n\'existe pas.</li>' +
         '<li><b>Le réglage des sons</b>, activés ou coupés.</li>' +
         '</ul>' +
-        '<p>Easy Code ne te demande ni nom, ni adresse e-mail, ni numéro de téléphone, ni position, ni moyen de paiement. Il n\'y a ni mesure d\'audience, ni publicité, ni bouton de réseau social.</p>' +
+        (IS_APP
+          ? '<p><b>Si tu crées un compte</b> (facultatif) : ton adresse e-mail, un identifiant de compte attribué automatiquement, ton mot de passe (conservé sous forme chiffrée par le prestataire, jamais lisible par l\'éditeur) et une copie de ta progression.</p>' +
+            '<p>Easy Code ne te demande ni nom, ni numéro de téléphone, ni position, ni moyen de paiement. Il n\'y a ni mesure d\'audience, ni publicité, ni bouton de réseau social.</p>'
+          : '<p>Easy Code ne te demande ni nom, ni adresse e-mail, ni numéro de téléphone, ni position, ni moyen de paiement. Il n\'y a ni mesure d\'audience, ni publicité, ni bouton de réseau social.</p>') +
         '<h3>Où elles sont stockées</h3>' +
-        '<p>Ces informations sont enregistrées dans ton navigateur, sur ton appareil (stockage local).</p>' +
+        '<p>Ces informations sont enregistrées ' + (IS_APP ? 'sur ton appareil' : 'dans ton navigateur, sur ton appareil') + ' (stockage local).</p>' +
+        (IS_APP ? '<p>Si tu crées un compte, ton adresse e-mail et une copie de ta progression sont aussi enregistrées chez Google Firebase (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irlande), sous-traitant de l\'éditeur. La base de données est située en France (région de Paris). Tu peux te connecter avec ce compte sur un autre appareil pour retrouver ta progression.</p>' : '') +
         (IS_APP ? '' : '<p>Si tu ouvres Easy Code en étant connecté à un compte Claude, une copie de ta progression est aussi enregistrée chez l\'hébergeur, Anthropic, dans un espace rattaché à ton compte. Elle sert uniquement à retrouver ta progression sur tes autres appareils. L\'éditeur d\'Easy Code n\'a pas accès à cet espace.</p>') +
         '<h3>Pourquoi, et sur quelle base</h3>' +
-        '<p>Ces données servent uniquement à faire fonctionner le suivi de progression que tu utilises. Leur traitement repose sur l\'exécution du service que tu demandes (article 6.1.b du RGPD).</p>' +
+        '<p>Ces données servent uniquement à faire fonctionner le suivi de progression' + (IS_APP ? ' et le compte que tu utilises' : ' que tu utilises') + '. Leur traitement repose sur l\'exécution du service que tu demandes (article 6.1.b du RGPD).</p>' +
         '<p>Elles ne servent ni à établir ton profil ni à t\'envoyer de la publicité. Elles ne sont ni vendues ni cédées.</p>' +
         '<h3>Durée de conservation</h3>' +
-        '<p>Ta progression est conservée tant que tu ne l\'effaces pas. Tu peux l\'effacer à tout moment : elle est alors supprimée de cet appareil' + (IS_APP ? '.' : ' et, si tu es connecté à un compte Claude, de l\'espace rattaché à ton compte.') + '</p>' +
+        '<p>Ta progression est conservée tant que tu ne l\'effaces pas. Tu peux l\'effacer à tout moment : elle est alors supprimée de cet appareil' + (IS_APP ? ' et, si tu es connecté, de ton compte.' : ' et, si tu es connecté à un compte Claude, de l\'espace rattaché à ton compte.') + '</p>' +
+        (IS_APP ? '<p>Ton compte est conservé tant que tu ne le supprimes pas. Tu peux le supprimer à tout moment depuis l\'onglet Progression, rubrique Mon compte : ton adresse e-mail et la copie en ligne de ta progression sont alors effacées définitivement. Tu peux aussi en faire la demande par e-mail à : ' + contactHTML() + '.</p>' : '') +
         '{{WIPE}}' +
         (IS_APP
-          ? '<h3>Aucun envoi de données</h3>' +
-            '<p>L\'application n\'envoie aucune donnée à un serveur : aucune de ses fonctions ne se connecte à Internet.</p>' +
+          ? '<h3>Envoi de données</h3>' +
+            '<p>Sans compte, l\'application n\'envoie aucune donnée à un serveur. Avec un compte, elle n\'envoie que ton adresse e-mail, ton mot de passe (pour te connecter) et ta progression, de façon chiffrée, à Google Firebase. Google peut traiter ces données hors de l\'Union européenne pour assurer le service, avec les garanties prévues par le RGPD (clauses contractuelles types).</p>' +
             (IS_DESKTOP ? '<p>GitHub traite de son côté les données liées au téléchargement de l\'application, selon ses propres règles.</p>' : '<p>Google Play traite de son côté les données liées au téléchargement et aux mises à jour de l\'application, selon ses propres règles.</p>')
           : '<h3>Hébergeur et transferts hors de l\'Union européenne</h3>' +
             '<p>Le site est hébergé par Anthropic, dont la maison mère est aux États-Unis. Comme pour tout site, l\'hébergeur traite des données techniques de connexion, par exemple ton adresse IP, pour afficher les pages et assurer leur sécurité.</p>' +
@@ -3200,7 +3400,7 @@ var SCENES = (function () {
       return '<h3>1. Objet</h3>' +
         '<p>Easy Code est un site d\'entraînement au code de la route, voiture et moto. En l\'utilisant, tu acceptes les présentes conditions.</p>' +
         '<h3>2. Accès</h3>' +
-        '<p>Le site est accessible gratuitement, sans inscription. Certaines séries portent la mention Premium : cette offre n\'est pas encore commercialisée. Voir ' + legalLink('abonnement') + '.</p>' +
+        '<p>' + (IS_APP ? 'L\'application est accessible gratuitement ; la création d\'un compte est facultative et sert à sauvegarder ta progression en ligne. Tu peux le supprimer à tout moment. ' : 'Le site est accessible gratuitement, sans inscription. ') + 'Certaines séries portent la mention Premium : cette offre n\'est pas encore commercialisée. Voir ' + legalLink('abonnement') + '.</p>' +
         '<h3>3. Un outil d\'entraînement, pas une source officielle</h3>' +
         '<p>Les questions sont rédigées pour s\'entraîner. Ce ne sont pas les questions officielles de l\'examen, et Easy Code ne remplace pas la formation d\'une auto-école.</p>' +
         '<p>Les règles peuvent changer et, malgré le soin apporté, une erreur reste possible. Easy Code ne garantit pas la réussite à l\'examen. En cas de doute, vérifie sur service-public.fr ou sur Légifrance.</p>' +
@@ -3281,6 +3481,14 @@ var SCENES = (function () {
       b.innerHTML = on ? ICON_PLAY : ICON_PAUSE;
     }
     else if (a === 'premium') openPremium();
+    else if (a === 'account') openAccount();
+    else if (a === 'acct-in' || a === 'acct-up') { acct.mail = acctVal('ac-mail'); acctLogin(a === 'acct-up'); }
+    else if (a === 'acct-mode') { acct.mail = acctVal('ac-mail'); acct.mode = acct.mode === 'up' ? 'in' : 'up'; acct.msg = ''; render(); }
+    else if (a === 'acct-reset') { acct.mail = acctVal('ac-mail'); acctReset(); }
+    else if (a === 'acct-out') { acct.msg = ''; signOut(); }
+    else if (a === 'acct-del') { acct.delAsk = true; acct.msg = ''; render(); }
+    else if (a === 'acct-del-no') { acct.delAsk = false; acct.msg = ''; render(); }
+    else if (a === 'acct-del-yes') acctDelete();
     else if (a === 'sub') { payMsg = true; render(); }
     else if (a === 'exam') startSession('exam');
     else if (a === 'mix') startSession('mix');
@@ -3348,7 +3556,13 @@ var SCENES = (function () {
   });
 
   render();
-  initCloud();
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' || view !== 'account' || acct.busy) return;
+    var id = e.target && e.target.id;
+    if (id === 'ac-mail' || id === 'ac-pw') { e.preventDefault(); acct.mail = acctVal('ac-mail'); acctLogin(acct.mode === 'up'); }
+    else if (id === 'ac-pw2') { e.preventDefault(); acctDelete(); }
+  });
+  if (IS_APP) initAccount(); else initCloud();
   if (legalFromHash()) openLegal(legalFromHash());
 
   /* ---------- Bouton retour d'Android ---------- */
@@ -3357,7 +3571,7 @@ var SCENES = (function () {
     if (CapApp && CapApp.addListener) {
       CapApp.addListener('backButton', function () {
         if (view === 'quiz') { if (sess.confirm) { sess.confirm = false; sess.focus = 'stem'; render(); } else { sess.confirm = true; render(); window.scrollTo(0, 0); } }
-        else if (view === 'premium' || view === 'result' || view === 'legal') goHome();
+        else if (view === 'premium' || view === 'result' || view === 'legal' || view === 'account') goHome();
         else CapApp.exitApp();
       });
     }
