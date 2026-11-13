@@ -1,0 +1,44 @@
+{
+  "name": "easy-code",
+  "productName": "Easy Code",
+  "version": "1.0.0",
+  "description": "Entraînement au code de la route, voiture et moto",
+  "author": "Anis Lalou",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --publish never"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.easycode.coderoute",
+    "productName": "Easy Code",
+    "copyright": "© 2026 Anis Lalou",
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png",
+      "artifactName": "Easy-Code-Setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Easy Code"
+    }
+  }
+}

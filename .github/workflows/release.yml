@@ -1,0 +1,29 @@
+name: Publier l'appli Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['app/**', 'main.js', 'preload.js', 'package.json', 'build/**', '.github/workflows/release.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run dist
+      - name: Publier la release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V=$(node -p "require('./package.json').version")
+          gh release delete "v$V" --yes --cleanup-tag || true
+          gh release create "v$V" dist/Easy-Code-Setup.exe --title "Easy Code $V pour Windows" --notes "Télécharge Easy-Code-Setup.exe puis double-clique dessus pour installer. Si Windows affiche « Windows a protégé votre ordinateur », clique sur Informations complémentaires puis Exécuter quand même." --latest
