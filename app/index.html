@@ -2814,7 +2814,7 @@ var SCENES = (function () {
       h += '<section class="card" aria-labelledby="lvl-h">' +
         '<dl class="stats">' +
         '<div class="stat"><dt>Bonnes réponses</dt><dd>' + (n ? Math.round(ok / n * 100) + '<small> %</small>' : '–') + '</dd></div>' +
-        '<div class="stat"><dt>Questions vues</dt><dd>' + seen + '<small> / ' + P.length + '</small></dd></div>' +
+        '<div class="stat"><dt>Questions vues</dt><dd style="white-space:nowrap">' + seen + '<small>\u202f/\u202f' + P.length + '</small></dd></div>' +
         '<div class="stat"><dt>Examens passés</dt><dd>' + allEx.length + '</dd></div></dl></section>';
       h += '<section class="card"><h3>Derniers examens ' + (moto ? 'moto' : 'voiture') + '</h3>' + chartHTML(exams) + '</section>';
       h += '<p class="foot" id="sync">' + esc(syncText()) + '</p>';
@@ -3000,7 +3000,7 @@ var SCENES = (function () {
       for (i = 0; i < ex.length - 1; i++) best = Math.max(best, ex[i].s);
       if (s === n) { t = 'Sans faute, bravo !'; d = n + ' sur ' + n + ' : difficile de faire mieux. Tu as le niveau pour le jour de l\'examen.'; }
       else if (pass) { t = 'Félicitations, c\'est réussi !'; d = 'Avec ' + s + ' bonnes réponses, tu passes la barre des ' + need + '. Garde ce rythme jusqu\'au vrai examen.'; }
-      else if (miss <= 3) { t = 'Tu y es presque !'; d = 'Il ne te manque que ' + pl(miss, 'bonne réponse', 'bonnes réponses') + ' pour atteindre les ' + need + '. Relis tes erreurs ci-dessous et retente : c\'est à ta portée.'; }
+      else if (miss <= 3) { t = 'Tu y es presque !'; d = 'Il ne te manque ' + (miss === 1 ? 'qu\'une bonne réponse' : 'que ' + miss + ' bonnes réponses') + ' pour atteindre les ' + need + '. Relis tes erreurs ci-dessous et retente : c\'est à ta portée.'; }
       else { t = 'Pas encore, mais tu avances'; d = 'Chaque examen blanc te rapproche du but. Reprends les questions à revoir ci-dessous, puis réessaie quand tu veux.'; }
       if (prev && s > prev.s) up = 'En progrès : +' + (s - prev.s) + ' par rapport à ton dernier examen blanc (' + prev.s + '/' + prev.n + ').' + (ex.length > 2 && s > best ? ' C\'est ton meilleur score.' : '');
     } else {
