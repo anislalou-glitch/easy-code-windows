@@ -79,10 +79,10 @@ button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent
   padding-top: 20px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   background: linear-gradient(to top, var(--bg) 62%, transparent); pointer-events: none; }
-.tabs-in { pointer-events: auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; width: 100%; max-width: 560px; padding: 5px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 10px 30px rgba(0, 0, 0, .45); }
+.tabs-in { pointer-events: auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; width: 100%; max-width: 560px; padding: 5px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 10px 30px rgba(0, 0, 0, .45); }
 .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 58px; padding: 6px 1px; letter-spacing: -.01em; border: 0; background: transparent; color: var(--ink-2); border-radius: 17px; font-size: 13px; font-weight: 500; cursor: pointer; min-width: 0; }
 .tab svg { width: 22px; height: 22px; flex: none; }
-.tab span { max-width: 100%; white-space: nowrap; }
+.tab span { max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: clip; }
 .tab[aria-current="page"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
 .tab-space { height: 84px; flex: none; }
 
@@ -244,7 +244,7 @@ body { overflow-x: clip; }
 .tabs-in { position: relative; }
 .tab { position: relative; z-index: 1; transition: color .25s ease; }
 .tab[aria-current="page"] { background: none; box-shadow: none; }
-.tab-ind { position: absolute; z-index: 0; top: 5px; bottom: 5px; left: 5px; width: calc((100% - 22px) / 4); border-radius: 17px; background: linear-gradient(180deg, var(--accent-2), var(--accent)); box-shadow: inset 0 1px 0 var(--shine), 0 12px 26px -12px var(--glow); transform: translateX(calc(var(--to) * (100% + 4px))); animation: ind .42s cubic-bezier(.3, 1.35, .5, 1); }
+.tab-ind { position: absolute; z-index: 0; top: 5px; bottom: 5px; left: 5px; width: calc((100% - 26px) / 5); border-radius: 17px; background: linear-gradient(180deg, var(--accent-2), var(--accent)); box-shadow: inset 0 1px 0 var(--shine), 0 12px 26px -12px var(--glow); transform: translateX(calc(var(--to) * (100% + 4px))); animation: ind .42s cubic-bezier(.3, 1.35, .5, 1); }
 @keyframes ind { from { transform: translateX(calc(var(--from) * (100% + 4px))); } }
 .tab[aria-current="page"] svg { animation: pop .42s cubic-bezier(.3, 1.6, .5, 1); }
 @keyframes pop { from { transform: scale(.7); } }
@@ -414,6 +414,8 @@ button, label, input { touch-action: manipulation; }
 .acct-msg.ko { color: var(--bad); }
 .acct-msg.ok { color: var(--good); }
 .acct-who { overflow-wrap: anywhere; }
+a.row { text-decoration: none; color: inherit; }
+.tab span { font-size: 11px; }
 </style>
 </head><body>
 <noscript><div class="nojs"><h1>Easy Code</h1><p>Easy Code est un site d'entraînement au code de la route, voiture et moto : séries par thème, examens blancs de 40 questions et suivi de progression.</p><p>Le site a besoin de JavaScript pour afficher les questions. Active JavaScript dans ton navigateur, puis recharge la page.</p><p>Site personnel édité par Anis Lalou, hébergé par Anthropic (claude.ai). Aucun cookie, aucune publicité, aucune mesure d'audience. Pages légales : #mentions-legales, #confidentialite, #cookies, #conditions, #abonnement.</p></div></noscript>
@@ -2905,13 +2907,14 @@ var SCENES = (function () {
     voiture: ICON_CAR,
     moto: ICON_MOTO,
     exam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4.5h6M9 13l2.2 2.2L15.5 11"/></svg>',
-    stats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>'
+    stats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>',
+    profil: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6"/></svg>'
   };
-  var TABS = [['voiture', 'Voiture'], ['moto', 'Moto'], ['exam', 'Examen'], ['stats', 'Progression']];
-  var HASH = { voiture: 'voiture', moto: 'moto', exam: 'examen', stats: 'progression' };
+  var TABS = [['voiture', 'Voiture'], ['moto', 'Moto'], ['exam', 'Examen'], ['stats', 'Progrès'], ['profil', 'Profil']];
+  var HASH = { voiture: 'voiture', moto: 'moto', exam: 'examen', stats: 'progression', profil: 'profil' };
   function tabFromHash() { var h = ''; try { h = location.hash.replace('#', ''); } catch (e) {} for (var k in HASH) if (HASH[k] === h) return k; return null; }
   var tab = S.veh === 'moto' ? 'moto' : 'voiture';
-  try { var _t = localStorage.getItem('easycode-tab'); if (_t === 'voiture' || _t === 'moto' || _t === 'exam' || _t === 'stats') tab = _t; } catch (e) {}
+  try { var _t = localStorage.getItem('easycode-tab'); if (_t === 'voiture' || _t === 'moto' || _t === 'exam' || _t === 'stats' || _t === 'profil') tab = _t; } catch (e) {}
   if (tabFromHash()) tab = tabFromHash();
   window.addEventListener('hashchange', function () {
     var t = tabFromHash(), lp = legalFromHash();
@@ -3000,7 +3003,7 @@ var SCENES = (function () {
         '<button class="btn-go" data-act="exam">' + lockI() + 'Commencer l\'examen ' + (moto ? 'moto' : 'voiture') + '</button></section>';
       if (lastEx) h += '<p class="last">Dernier examen ' + (moto ? 'moto' : 'voiture') + ' : <b>' + lastEx.s + '/' + lastEx.n + '</b></p>';
       h += note;
-    } else {
+    } else if (tab === 'stats') {
       h += '<h2 class="page-h" id="lvl-h">Progression</h2>';
       h += '<section class="card" aria-labelledby="lvl-h">' +
         '<dl class="stats">' +
@@ -3008,11 +3011,21 @@ var SCENES = (function () {
         '<div class="stat"><dt>Questions vues</dt><dd style="white-space:nowrap">' + seen + '<small>\u202f/\u202f' + P.length + '</small></dd></div>' +
         '<div class="stat"><dt>Examens passés</dt><dd>' + allEx.length + '</dd></div></dl></section>';
       h += '<section class="card"><h3>Derniers examens ' + (moto ? 'moto' : 'voiture') + '</h3>' + chartHTML(exams) + '</section>';
-      if (IS_APP) h += '<section class="card list"><button class="row" data-act="account"><span class="row-main"><span class="row-t">' + (auth ? 'Mon compte' : 'Créer un compte ou se connecter') + '</span><span class="row-s acct-who">' +
-        esc(auth ? auth.email : 'Sauvegarde ta progression et retrouve-la sur tous tes appareils') + '</span></span><span class="chev" aria-hidden="true">›</span></button></section>';
-      h += '<p class="foot" id="sync">' + esc(syncText()) + '</p>';
-      h += '<label class="chk snd"><input type="checkbox" id="snd-on"' + (SND.isOn() ? ' checked' : '') + '><span><b>Sons.</b> Un petit son au toucher, à la correction et à la fin d\'un examen.</span></label>';
-      h += wipeHTML();
+      h += '<p class="foot">Compte, sons et effacement de la progression : onglet Profil.</p>';
+    } else {
+      h += '<h2 class="page-h" id="prof-h">Profil</h2>';
+      if (IS_APP) {
+        h += '<section class="card list" aria-labelledby="prof-h"><h3 class="list-h sec-h">Compte</h3><button class="row" data-act="account"><span class="row-main"><span class="row-t">' + (auth ? 'Mon compte' : 'Créer un compte ou se connecter') + '</span><span class="row-s acct-who">' +
+          esc(auth ? auth.email : 'Sauvegarde ta progression et retrouve-la sur tous tes appareils') + '</span></span><span class="chev" aria-hidden="true">›</span></button></section>';
+      }
+      h += '<section class="card list"><h3 class="list-h sec-h">Abonnement</h3><button class="row" data-act="premium"><span class="row-main"><span class="row-t">Easy Code Premium</span><span class="row-s">' +
+        (premium ? 'Actif (mode aperçu)' : '0,99 € par mois') + '</span></span><span class="chev" aria-hidden="true">›</span></button></section>';
+      h += '<section class="card"><h3>Réglages</h3><label class="chk snd"><input type="checkbox" id="snd-on"' + (SND.isOn() ? ' checked' : '') + '><span><b>Sons.</b> Un petit son au toucher, à la correction et à la fin d\'un examen.</span></label></section>';
+      h += '<section class="card"><h3>Mes données</h3><p class="foot" id="sync">' + esc(syncText()) + '</p>' + wipeHTML() + '</section>';
+      h += '<section class="card list"><h3 class="list-h sec-h">Aide et contact</h3>' +
+        '<a class="row" href="mailto:' + CONTACT + '?subject=Easy%20Code"><span class="row-main"><span class="row-t">Nous écrire</span><span class="row-s acct-who">' + esc(CONTACT) + '</span></span><span class="chev" aria-hidden="true">›</span></a>' +
+        '<button class="row" data-act="legal" data-p="confidentialite"><span class="row-main"><span class="row-t">Confidentialité</span></span><span class="chev" aria-hidden="true">›</span></button>' +
+        '<button class="row" data-act="legal" data-p="conditions"><span class="row-main"><span class="row-t">Conditions d\'utilisation</span></span><span class="chev" aria-hidden="true">›</span></button></section>';
     }
 
     if (!IS_APP && tab !== 'stats') h += getAppHTML();
@@ -3359,7 +3372,7 @@ var SCENES = (function () {
         '<p>Elles ne servent ni à établir ton profil ni à t\'envoyer de la publicité. Elles ne sont ni vendues ni cédées.</p>' +
         '<h3>Durée de conservation</h3>' +
         '<p>Ta progression est conservée tant que tu ne l\'effaces pas. Tu peux l\'effacer à tout moment : elle est alors supprimée de cet appareil' + (IS_APP ? ' et, si tu es connecté, de ton compte.' : ' et, si tu es connecté à un compte Claude, de l\'espace rattaché à ton compte.') + '</p>' +
-        (IS_APP ? '<p>Ton compte est conservé tant que tu ne le supprimes pas. Tu peux le supprimer à tout moment depuis l\'onglet Progression, rubrique Mon compte : ton adresse e-mail et la copie en ligne de ta progression sont alors effacées définitivement. Tu peux aussi en faire la demande par e-mail à : ' + contactHTML() + '.</p>' : '') +
+        (IS_APP ? '<p>Ton compte est conservé tant que tu ne le supprimes pas. Tu peux le supprimer à tout moment depuis l\'onglet Profil, rubrique Compte : ton adresse e-mail et la copie en ligne de ta progression sont alors effacées définitivement. Tu peux aussi en faire la demande par e-mail à : ' + contactHTML() + '.</p>' : '') +
         '{{WIPE}}' +
         (IS_APP
           ? '<h3>Envoi de données</h3>' +
