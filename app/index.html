@@ -1013,8 +1013,7 @@ var SC = (function () {
         '<g transform="translate(0 16) scale(.72)">' + '<circle r="48.7" fill="' + RED + '"/><circle r="34.2" fill="' + WH + '"/>' + tx('30', 15.2, 43, INK, ' textLength="46" lengthAdjust="spacingAndGlyphs"') + '</g>';
     } else if (kind === 'danger' || kind === 'bend') {
       /* A1a (virage à droite) / A1b (à gauche, symétrique) */
-      face = danger(true, '<g transform="scale(' + ((st && st.curve < 0) ? -1 : 1) + ' 1) translate(-1 4)"><path d="M-9,20 L-9,3.4 C-9,-11 1.4,-19.4 16,-21" stroke="' + INK + '" stroke-width="9" fill="none"/>' +
-        '<path d="M-13.5,19.4 L-4.5,19.4 L-9,24.6 Z" fill="' + INK + '"/></g>');
+      face = danger(true, '<g transform="scale(' + ((st && st.curve < 0) ? -1 : 1) + ' 1) translate(-1 4)"><path d="M-9,24 L-9,3.4 C-9,-11 1.4,-19.4 16,-21" stroke="' + INK + '" stroke-width="9" fill="none"/></g>');
     } else if (kind === 'gravel') {
       /* AK22 : panneau temporaire à fond jaune, voiture et gravillons projetés */
       face = danger(true, '<g transform="translate(-6.6 9) scale(1.12)"><path d="M-20,4 L-20,-1.6 Q-20,-4.4 -17,-5 L-12.6,-6 L-7.4,-12.2 Q-6.4,-13.2 -4.8,-13.2 L6.6,-13.2 Q8.4,-13.2 9.4,-11.8 L13.2,-6 L16.6,-5 Q19,-4.2 19,-1.4 L19,4 Z" fill="' + INK + '"/>' +
@@ -1041,8 +1040,8 @@ var SC = (function () {
       };
       face = danger(true, '<g transform="translate(0 12.6) scale(1.32)">' + arc(0) + arc(120) + arc(240) + '</g>');
     } else if (kind === 'ab2') {
-      /* AB2 : route prioritaire, voie secondaire de part et d'autre */
-      face = danger(true, '<path d="M-5.4,33 L-5.4,9.6 L-9.4,9.6 L0,-6 L9.4,9.6 L5.4,9.6 L5.4,33 Z" fill="' + INK + '"/><rect x="-19" y="15.6" width="38" height="5.6" fill="' + INK + '"/>');
+      /* AB2 : croix noire, trait vertical épais (route prioritaire) coupé par un trait horizontal fin (route secondaire) */
+      face = danger(true, '<rect x="-5.6" y="-9" width="11.2" height="41" fill="' + INK + '"/><rect x="-19.5" y="9.4" width="39" height="4.6" fill="' + INK + '"/>');
     } else if (kind === 'agglo' || kind === 'aggloend') {
       /* EB10 / EB20 : panneau blanc à bordure rouge, nom en capitales noires ; barre rouge pour la sortie */
       poleH = 215; cy = 240;
