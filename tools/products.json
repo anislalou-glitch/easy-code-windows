@@ -4990,5 +4990,281 @@
 "name": "Kit plancher mezzanine bois 2×2 m sur-mesure (pour plafond de 3 m et plus)",
 "brand": "Leroy Merlin",
 "url": ""
+},
+{
+"id": "x-ws-caisson-alex",
+"name": "ALEX caisson à tiroirs blanc 36×70 cm",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-caisson-roulettes",
+"name": "Caisson de bureau 3 tiroirs à roulettes verrouillable",
+"brand": "Bisley",
+"url": ""
+},
+{
+"id": "x-ws-caisson-helmer",
+"name": "HELMER caisson à tiroirs sur roulettes noir",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-caisson-kave",
+"name": "Caisson Marcolina 3 tiroirs chêne",
+"brand": "Kave Home",
+"url": ""
+},
+{
+"id": "x-ws-caisson-but",
+"name": "Caisson de bureau 2 tiroirs blanc et bois",
+"brand": "But",
+"url": ""
+},
+{
+"id": "x-ws-caisson-usm",
+"name": "USM Haller caisson 3 tiroirs sur roulettes",
+"brand": "USM",
+"url": ""
+},
+{
+"id": "x-ws-lampe-forsa",
+"name": "FORSÅ lampe de bureau noir",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-lampe-tertial",
+"name": "TERTIAL lampe de travail articulée gris",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-lampe-benq",
+"name": "BenQ ScreenBar Halo lampe d'écran",
+"brand": "BenQ",
+"url": ""
+},
+{
+"id": "x-ws-lampe-tolomeo",
+"name": "Artemide Tolomeo Micro lampe de bureau",
+"brand": "Artemide",
+"url": ""
+},
+{
+"id": "x-ws-lampe-anglepoise",
+"name": "Anglepoise Type 75 lampe de bureau",
+"brand": "Anglepoise",
+"url": ""
+},
+{
+"id": "x-ws-lampe-dyson",
+"name": "Dyson Solarcycle Morph lampe de bureau",
+"brand": "Dyson",
+"url": ""
+},
+{
+"id": "x-ws-lampe-xiaomi",
+"name": "Xiaomi Mi LED Desk Lamp 1S connectée",
+"brand": "Xiaomi",
+"url": ""
+},
+{
+"id": "x-ws-bras-ergotron",
+"name": "Ergotron LX bras d'écran articulé",
+"brand": "Ergotron",
+"url": ""
+},
+{
+"id": "x-ws-bras-double",
+"name": "Bras double écran à vérin gaz",
+"brand": "Huanuo",
+"url": ""
+},
+{
+"id": "x-ws-support-pc",
+"name": "Support PC portable aluminium réglable",
+"brand": "Rain Design",
+"url": ""
+},
+{
+"id": "x-ws-repose-pieds",
+"name": "Repose-pieds ergonomique réglable",
+"brand": "Fellowes",
+"url": ""
+},
+{
+"id": "x-ws-tapis-souris",
+"name": "Sous-main XXL feutre gris 90×40",
+"brand": "Orbitkey",
+"url": ""
+},
+{
+"id": "x-ws-dock",
+"name": "CalDigit TS4 station d'accueil Thunderbolt",
+"brand": "CalDigit",
+"url": ""
+},
+{
+"id": "x-ws-clavier",
+"name": "Logitech MX Keys S clavier et MX Master 3S",
+"brand": "Logitech",
+"url": ""
+},
+{
+"id": "x-ws-webcam",
+"name": "Logitech Brio 4K webcam",
+"brand": "Logitech",
+"url": ""
+},
+{
+"id": "x-ws-goulotte",
+"name": "SIGNUM goulotte passe-câbles horizontale",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-tapis-sol",
+"name": "Tapis protège-sol pour chaise 120×90",
+"brand": "Floortex",
+"url": ""
+},
+{
+"id": "x-ws-tableau-blanc",
+"name": "Tableau blanc magnétique 120×90",
+"brand": "Bi-Office",
+"url": ""
+},
+{
+"id": "x-ws-tableau-verre",
+"name": "Tableau en verre magnétique 100×65",
+"brand": "Nobo",
+"url": ""
+},
+{
+"id": "x-ws-tableau-liege",
+"name": "Tableau en liège 90×60 cadre bois",
+"brand": "Legamaster",
+"url": ""
+},
+{
+"id": "x-ws-pegboard",
+"name": "SKÅDIS panneau perforé 76×56 blanc",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-etag-murale",
+"name": "Étagère murale bureau 2 niveaux chêne",
+"brand": "Maisons du Monde",
+"url": ""
+},
+{
+"id": "x-ws-cloison-feutre",
+"name": "Cloison acoustique feutre sur pieds 160×120",
+"brand": "Muffle",
+"url": ""
+},
+{
+"id": "x-ws-cloison-paravent",
+"name": "Paravent acoustique 3 panneaux",
+"brand": "BuzziSpace",
+"url": ""
+},
+{
+"id": "x-ws-cloison-verriere",
+"name": "Verrière d'atelier 3 vitres noir 120×110",
+"brand": "Castorama",
+"url": ""
+},
+{
+"id": "x-ws-cloison-ecran",
+"name": "Écran de séparation bureau en feutre 120×40",
+"brand": "Fellowes",
+"url": ""
+},
+{
+"id": "x-ws-cloison-claustra",
+"name": "Claustra bois tasseaux sur pied 180 cm",
+"brand": "Inspire",
+"url": ""
+},
+{
+"id": "x-ws-cabine",
+"name": "Cabine acoustique 1 personne (phone box)",
+"brand": "Silent Room",
+"url": ""
+},
+{
+"id": "x-ws-reunion-ikea",
+"name": "MITTZON table de réunion 140×108 placage noyer",
+"brand": "IKEA",
+"url": ""
+},
+{
+"id": "x-ws-reunion-ronde",
+"name": "Table de réunion ronde 120 cm blanc",
+"brand": "Bruneau",
+"url": ""
+},
+{
+"id": "x-ws-reunion-6",
+"name": "Table de réunion 6 personnes 180×90 chêne",
+"brand": "Kave Home",
+"url": ""
+},
+{
+"id": "x-ws-reunion-usm",
+"name": "USM Kitos table de réunion 200×100",
+"brand": "USM",
+"url": ""
+},
+{
+"id": "x-ws-reunion-haute",
+"name": "Table haute de réunion debout 160×80",
+"brand": "Bruneau",
+"url": ""
+},
+{
+"id": "x-ws-reunion-chaises",
+"name": "Lot de 4 chaises de réunion empilables",
+"brand": "Bruneau",
+"url": ""
+},
+{
+"id": "x-ws-imp-hp",
+"name": "HP OfficeJet Pro 9125e imprimante multifonction",
+"brand": "HP",
+"url": ""
+},
+{
+"id": "x-ws-imp-epson",
+"name": "Epson EcoTank ET-2856 à réservoirs",
+"brand": "Epson",
+"url": ""
+},
+{
+"id": "x-ws-imp-brother",
+"name": "Brother HL-L2445DW laser monochrome",
+"brand": "Brother",
+"url": ""
+},
+{
+"id": "x-ws-imp-canon",
+"name": "Canon PIXMA TS5350i multifonction",
+"brand": "Canon",
+"url": ""
+},
+{
+"id": "x-ws-imp-meuble",
+"name": "Meuble imprimante à roulettes 2 niveaux",
+"brand": "Alinéa",
+"url": ""
+},
+{
+"id": "x-ws-imp-laser-couleur",
+"name": "Brother MFC-L3760CDW laser couleur",
+"brand": "Brother",
+"url": ""
 }
 ]
