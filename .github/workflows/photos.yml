@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install requests pillow
-      - run: python tools/themes.py
+      - run: mkdir -p ph && python tools/ph_list.py
       - run: |
           git config user.name bot && git config user.email bot@users.noreply.github.com
-          git add th v && git commit -m "photos produits" && git push
+          git add ph && git commit -m "photos produits" && git push
