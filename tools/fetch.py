@@ -4,7 +4,14 @@ import requests
 from PIL import Image
 UA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36','Accept-Language':'fr-FR,fr;q=0.9,en;q=0.8'}
 P=json.load(open('tools/products.json'));os.makedirs('img',exist_ok=True)
-for f in os.listdir('img'): os.remove('img/'+f)
+ONLY=json.load(open('tools/only.json')) if os.path.exists('tools/only.json') else None
+if ONLY:
+    P=[p for p in P if p['id'] in ONLY]
+    for p in P:
+        for f in [f'img/{p["id"]}.jpg']+[f'img/{p["id"]}-{n}.jpg' for n in (2,3,4)]:
+            if os.path.exists(f): os.remove(f)
+else:
+    for f in os.listdir('img'): os.remove('img/'+f)
 MAX=4
 def get(u,**k):
     try:
@@ -12,7 +19,7 @@ def get(u,**k):
         return r if r.ok else None
     except Exception: return None
 def page_imgs(u):
-    if not u or any(x in u for x in('offre','recherche','search','?q=','/s/')): return []
+    if not u or any(x in u for x in('offre','recherche','search','?q=','/s/','catalogue')) or not re.search(r'(/p/|\.prd|\.html|/products/|/produit)',u) or re.search(r'/produits/[a-z-]+(/[a-z-]+)*(/\d+)?/?$',u): return []
     r=get(u)
     if not r: return []
     t=r.text;out=[]
@@ -61,7 +68,7 @@ def save(im,path):
     c.save(path,'JPEG',quality=74,optimize=True,progressive=True)
 def one(p):
     pid=p['id'];name=re.sub(r'[«»]','',p['name']).strip();brand=p['brand'] if p['brand'] not in('Divers','') else ''
-    q=(name+' '+brand).strip()
+    q=(ONLY or {}).get(pid) or (name+' '+brand).strip()
     src=[('page',u) for u in page_imgs(p['url'])]
     if brand=='IKEA' or 'ikea' in p['url']: src+=[('ikea',u) for u in ikea(' '.join(name.split(' ')[:4]))]
     b=bing(q); src+=[('bing',u) for u in b]
@@ -77,5 +84,7 @@ def one(p):
         hs.append(h);n=len(got);save(im,f'img/{pid}.jpg' if n==0 else f'img/{pid}-{n+1}.jpg');got.append(k)
     print(pid,got,flush=True);return pid,got
 with ThreadPoolExecutor(6) as ex: rep=dict(ex.map(one,P))
+old=json.load(open('img/report.json')) if ONLY and os.path.exists('img/report.json') else {}
+old.update(rep);rep=old
 json.dump(rep,open('img/report.json','w'),indent=1,ensure_ascii=False)
 print('OK',sum(1 for v in rep.values() if v),'/',len(rep),'photos',sum(len(v) for v in rep.values()))
