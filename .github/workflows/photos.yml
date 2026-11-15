@@ -1,5 +1,5 @@
 name: renov3d-photos
-on: {push: {branches: [renov3d-photos], paths: ['tools/**','.github/**']}}
+on: {push: {branches: [renov3d-photos], paths: ['tools/fetch.py','tools/only.json','tools/products.json']}}
 permissions: {contents: write}
 jobs:
   go:
