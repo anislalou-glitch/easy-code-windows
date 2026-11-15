@@ -1,0 +1,133 @@
+===== kivik tencent/Hunyuan3D-2.1
+Client.predict() Usage Info
+---------------------------
+Named API endpoints: 11
+
+ - predict(api_name="/lambda") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(image, mv_image_front, mv_image_back, mv_image_left, mv_image_right, steps, guidance_scale, seed, octree_resolution, check_box_rembg, num_chunks, randomize_seed, api_name="/shape_generation") -> (file, output, mesh_stats, seed)
+    Parameters:
+     - [Image] image: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_front: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_back: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_left: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_right: filepath | None (not required, defaults to:   None)  
+     - [Slider] steps: float (not required, defaults to:   30)  (numeric value between 1 and 100) 
+     - [Number] guidance_scale: float (not required, defaults to:   5.0)  
+     - [Slider] seed: float (not required, defaults to:   1234)  (numeric value between 0 and 10000000.0) 
+     - [Slider] octree_resolution: float (not required, defaults to:   256)  (numeric value between 16 and 512) 
+     - [Checkbox] check_box_rembg: bool (not required, defaults to:   True)  
+     - [Slider] num_chunks: float (not required, defaults to:   8000)  (numeric value between 1000 and 5000000) 
+     - [Checkbox] randomize_seed: bool (not required, defaults to:   True)  
+    Returns:
+     - [File] file: filepath 
+     - [Html] output: str 
+     - [Json] mesh_stats: Dict[Any, Any] (any valid json) 
+     - [Slider] seed: float (numeric value between 0 and 10000000.0) 
+
+ - predict(api_name="/lambda_1") -> (include_texture, simplify_mesh, download)
+    Parameters:
+     - None
+    Returns:
+     - [Checkbox] include_texture: bool 
+     - [Checkbox] simplify_mesh: bool 
+     - [Downloadbutton] download: filepath 
+
+ - predict(api_name="/lambda_2") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(image, mv_image_front, mv_image_back, mv_image_left, mv_image_right, steps, guidance_scale, seed, octree_resolution, check_box_rembg, num_chunks, randomize_seed, api_name="/generation_all") -> (file, file, output, mesh_stats, seed)
+    Parameters:
+     - [Image] image: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_front: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_back: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_left: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_right: filepath | None (not required, defaults to:   None)  
+     - [Slider] steps: float (not required, defaults to:   30)  (numeric value between 1 and 100) 
+     - [Number] guidance_scale: float (not required, defaults to:   5.0)  
+     - [Slider] seed: float (not required, defaults to:   1234)  (numeric value between 0 and 10000000.0) 
+     - [S
+hunyuan fail /generation_all TypeError("Parameter `caption` is not a valid key-word argument. Please click on 'view API' in the footer of the Gradio app to see usage.")
+hunyuan fail /generation_all TypeError("Parameter `caption` is not a valid key-word argument. Please click on 'view API' in the footer of the Gradio app to see usage.")
+hunyuan fail /shape_generation TypeError("Parameter `caption` is not a valid key-word argument. Please click on 'view API' in the footer of the Gradio app to see usage.")
+===== kivik tencent/Hunyuan3D-2
+Client.predict() Usage Info
+---------------------------
+Named API endpoints: 12
+
+ - predict(api_name="/lambda") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(api_name="/lambda_1") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(caption, image, mv_image_front, mv_image_back, mv_image_left, mv_image_right, steps, guidance_scale, seed, octree_resolution, check_box_rembg, num_chunks, randomize_seed, api_name="/shape_generation") -> (file, output, mesh_stats, seed)
+    Parameters:
+     - [Textbox] caption: str | None (not required, defaults to:   None)  
+     - [Image] image: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_front: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_back: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_left: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_right: filepath | None (not required, defaults to:   None)  
+     - [Slider] steps: float (not required, defaults to:   30)  (numeric value between 1 and 100) 
+     - [Number] guidance_scale: float (not required, defaults to:   5.0)  
+     - [Slider] seed: float (not required, defaults to:   1234)  (numeric value between 0 and 10000000.0) 
+     - [Slider] octree_resolution: float (not required, defaults to:   256)  (numeric value between 16 and 512) 
+     - [Checkbox] check_box_rembg: bool (not required, defaults to:   True)  
+     - [Slider] num_chunks: float (not required, defaults to:   8000)  (numeric value between 1000 and 5000000) 
+     - [Checkbox] randomize_seed: bool (not required, defaults to:   True)  
+    Returns:
+     - [File] file: filepath 
+     - [Html] output: str 
+     - [Json] mesh_stats: Dict[Any, Any] (any valid json) 
+     - [Slider] seed: float (numeric value between 0 and 10000000.0) 
+
+ - predict(api_name="/lambda_2") -> (include_texture, simplify_mesh, download)
+    Parameters:
+     - None
+    Returns:
+     - [Checkbox] include_texture: bool 
+     - [Checkbox] simplify_mesh: bool 
+     - [Downloadbutton] download: filepath 
+
+ - predict(api_name="/lambda_3") -> 
+    Parameters:
+     - None
+    Returns:
+     - None
+
+ - predict(caption, image, mv_image_front, mv_image_back, mv_image_left, mv_image_right, steps, guidance_scale, seed, octree_resolution, check_box_rembg, num_chunks, randomize_seed, api_name="/generation_all") -> (file, file, output, mesh_stats, seed)
+    Parameters:
+     - [Textbox] caption: str | None (not required, defaults to:   None)  
+     - [Image] image: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_front: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_back: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_left: filepath | None (not required, defaults to:   None)  
+     - [Image] mv_image_right: filepath | None (not required, defaults to:   None)  
+     - [Slider] steps: float (n
+hunyuan fail /generation_all AppError('"name \'texgen_worker\' is not defined"')
+hunyuan fail /generation_all AppError('"name \'texgen_worker\' is not defined"')
+hunyuan kivik outputs: ['/tmp/gradio/dcf72b26b18e1de1de2f91e4b9583371c9d7c2437bc225234fe92e542c5450ab/white_mesh.glb']
+SAVED m3d/kivik-hunyuan.glb 7905904
+===== malm-lit tencent/Hunyuan3D-2.1
+hunyuan fail /generation_all TypeError("Parameter `caption` is not a valid key-word argument. Please click on 'view API' in the footer of the Gradio app to see usage.")
+hunyuan fail /generation_all TypeError("Parameter `caption` is not a valid key-word argument. Please click on 'view API' in the footer of the Gradio app to see usage.")
+hunyuan fail /shape_generation TypeError("Parameter `caption` is not a valid key-word argument. Please click on 'view API' in the footer of the Gradio app to see usage.")
+===== malm-lit tencent/Hunyuan3D-2
+hunyuan fail /generation_all AppError('"name \'texgen_worker\' is not defined"')
+hunyuan fail /generation_all AppError("'You have exceeded your ZeroGPU quota (135s requested vs. 131s left). Try again in 23:59:08. Authenticate with a Hugging Face token for more quota - https://huggingface.co/settings/tokens'")
+hunyuan malm-lit outputs: ['/tmp/gradio/27ad9353e9b8bf6df0d2cdea190043ddc5ee04488e4f9334081eb1fe97b16e7a/white_mesh.glb']
+SAVED m3d/malm-lit-hunyuan.glb 9261712
