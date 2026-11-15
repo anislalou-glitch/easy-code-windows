@@ -70,7 +70,7 @@ def one(p):
     pid=p['id'];name=re.sub(r'[«»]','',p['name']).strip();brand=p['brand'] if p['brand'] not in('Divers','') else ''
     q=(ONLY or {}).get(pid) or (name+' '+brand).strip()
     src=[('page',u) for u in page_imgs(p['url'])]
-    if (brand=='IKEA' or 'ikea' in p['url']) and not ONLY: src+=[('ikea',u) for u in ikea(' '.join(name.split(' ')[:4]))]
+    if brand=='IKEA' or 'ikea' in p['url']: src+=[('ikea',u) for u in ikea(' '.join(name.split(' ')[:4]))]
     b=bing(q); src+=[('bing',u) for u in b]
     if len(src)<MAX: src+=[('ddg',u) for u in ddg(q)]
     got=[];hs=[];used=set()
