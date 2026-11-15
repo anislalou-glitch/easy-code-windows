@@ -4978,5 +4978,280 @@
   "yandex",
   "yandex",
   "yandex"
+ ],
+ "x-ws-caisson-alex": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-caisson-roulettes": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-caisson-helmer": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-caisson-kave": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-caisson-but": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-caisson-usm": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-lampe-forsa": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-lampe-tertial": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-lampe-benq": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-lampe-tolomeo": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-lampe-anglepoise": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-lampe-dyson": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-lampe-xiaomi": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-bras-ergotron": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-bras-double": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-support-pc": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-repose-pieds": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-tapis-souris": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-dock": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-clavier": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-webcam": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-goulotte": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-tapis-sol": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-tableau-blanc": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-tableau-verre": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-tableau-liege": [
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-pegboard": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-etag-murale": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-cloison-feutre": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-cloison-paravent": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-cloison-verriere": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-cloison-ecran": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-cloison-claustra": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-cabine": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-reunion-ikea": [
+  "ikea",
+  "ikea",
+  "ikea",
+  "ikea"
+ ],
+ "x-ws-reunion-ronde": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-reunion-6": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-reunion-usm": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-reunion-haute": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-reunion-chaises": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-imp-hp": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-imp-epson": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-imp-brother": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-imp-canon": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-imp-meuble": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "x-ws-imp-laser-couleur": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ]
 }
