@@ -1,51 +1,81 @@
-import json,re,io,os,html,time,urllib.parse
+import json,re,io,os,html,time,urllib.parse,hashlib
+from concurrent.futures import ThreadPoolExecutor
 import requests
 from PIL import Image
-UA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36','Accept-Language':'fr-FR,fr;q=0.9'}
-P=json.load(open('tools/products.json'));os.makedirs('img',exist_ok=True);rep={}
+UA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36','Accept-Language':'fr-FR,fr;q=0.9,en;q=0.8'}
+P=json.load(open('tools/products.json'));os.makedirs('img',exist_ok=True)
+for f in os.listdir('img'): os.remove('img/'+f)
+MAX=4
 def get(u,**k):
     try:
-        r=requests.get(u,headers=UA,timeout=20,**k)
+        r=requests.get(u,headers={**UA,**k.pop('h',{})},timeout=20,**k)
         return r if r.ok else None
     except Exception: return None
-def page_img(u):
-    if not u or 'offre' in u or 'recherche' in u or 'search' in u: return []
+def page_imgs(u):
+    if not u or any(x in u for x in('offre','recherche','search','?q=','/s/')): return []
     r=get(u)
     if not r: return []
     t=r.text;out=[]
-    for pat in [r'property="og:image"\s+content="([^"]+)"',r'content="([^"]+)"\s+property="og:image"',r'name="twitter:image"\s+content="([^"]+)"',r'"image"\s*:\s*\[?\s*"(https?://[^"]+)"']:
+    for pat in [r'property="og:image"\s+content="([^"]+)"',r'content="([^"]+)"\s+property="og:image"',r'name="twitter:image"\s+content="([^"]+)"']:
         out+=re.findall(pat,t)
-    return [html.unescape(x) for x in out]
+    for blk in re.findall(r'"image"\s*:\s*(\[[^\]]*\]|"[^"]+")',t):
+        out+=re.findall(r'"(https?://[^"]+)"',blk)
+    if 'ikea.com' in u: out+=re.findall(r'(https://www\.ikea\.com/fr/fr/images/products/[^"\s?]+\.(?:jpg|avif|webp))',t)
+    seen=[];[seen.append(html.unescape(x).replace('\\/','/')) for x in out if x not in seen];return seen
 def ikea(q):
     r=get('https://sik.search.blue.cdtapps.com/fr/fr/search-result-page?types=PRODUCT&size=3&q='+urllib.parse.quote(q))
     try:
-        return [it['product']['mainImageUrl'] for it in r.json()['searchResultPage']['products']['main']['items'][:2]]
+        it=r.json()['searchResultPage']['products']['main']['items'][0]['product']
+        out=[it.get('mainImageUrl'),it.get('contextualImageUrl')]
+        if it.get('pipUrl'): out+=page_imgs(it['pipUrl'])
+        return [x for x in out if x]
     except Exception: return []
 def bing(q):
-    r=get('https://www.bing.com/images/search?form=HDRSC2&first=1&q='+urllib.parse.quote(q))
+    r=get('https://www.bing.com/images/search?form=HDRSC2&first=1&setlang=fr&cc=FR&q='+urllib.parse.quote(q),h={'Cookie':'SRCHHPGUSR=ADLT=OFF'})
     if not r: return []
-    return [html.unescape(x) for x in re.findall(r'murl&quot;:&quot;(.*?)&quot;',r.text)][:6]
-def save(u,pid):
+    t=html.unescape(r.text)
+    return re.findall(r'"murl":"(https?://[^"]+)"',t)[:10]
+def ddg(q):
+    r=get('https://duckduckgo.com/?ia=images&iax=images&q='+urllib.parse.quote(q))
+    if not r: return []
+    m=re.search(r"vqd=['\"]?([\d-]+)",r.text)
+    if not m: return []
+    r=get('https://duckduckgo.com/i.js?l=fr-fr&o=json&f=,,,&p=1&q='+urllib.parse.quote(q)+'&vqd='+m.group(1),h={'Referer':'https://duckduckgo.com/'})
+    try: return [x['image'] for x in r.json()['results'][:10]]
+    except Exception: return []
+def ahash(im):
+    g=im.convert('L').resize((8,8));px=list(g.getdata());a=sum(px)/64;return sum(1<<i for i,p in enumerate(px) if p>a)
+def load(u):
     r=get(u)
-    if not r: return False
+    if not r: return None
     try:
         im=Image.open(io.BytesIO(r.content));im.load()
-        if im.width<120 or im.height<120: return False
+        if im.width<200 or im.height<200: return None
         if im.mode in('RGBA','LA','P'):
             im=im.convert('RGBA');bg=Image.new('RGB',im.size,'white');bg.paste(im,mask=im.split()[-1]);im=bg
-        im=im.convert('RGB');im.thumbnail((320,320),Image.LANCZOS)
-        c=Image.new('RGB',(320,320),'white');c.paste(im,((320-im.width)//2,(320-im.height)//2))
-        c.save(f'img/{pid}.jpg','JPEG',quality=80,optimize=True,progressive=True);return True
-    except Exception: return False
-import re as _r
-for p in P:
-    pid=p['id'];name=_r.sub(r'[«»]','',p['name']);q=(name+' '+(p['brand'] if p['brand'] not in('Divers','') else '')).strip()
-    src=[('page',u) for u in page_img(p['url'])]
-    if p['brand']=='IKEA' or 'ikea' in p['url']: src+=[('ikea',u) for u in ikea(name.split(' ')[0]+' '+' '.join(name.split(' ')[1:4]))]
-    src+=[('bing',u) for u in bing(q)]
-    ok=None
+        return im.convert('RGB')
+    except Exception: return None
+def save(im,path):
+    im=im.copy();im.thumbnail((480,480),Image.LANCZOS)
+    c=Image.new('RGB',(480,480),'white');c.paste(im,((480-im.width)//2,(480-im.height)//2))
+    c.save(path,'JPEG',quality=74,optimize=True,progressive=True)
+def one(p):
+    pid=p['id'];name=re.sub(r'[«»]','',p['name']).strip();brand=p['brand'] if p['brand'] not in('Divers','') else ''
+    q=(name+' '+brand).strip()
+    src=[('page',u) for u in page_imgs(p['url'])]
+    if brand=='IKEA' or 'ikea' in p['url']: src+=[('ikea',u) for u in ikea(' '.join(name.split(' ')[:4]))]
+    b=bing(q); src+=[('bing',u) for u in b]
+    if len(src)<MAX: src+=[('ddg',u) for u in ddg(q)]
+    got=[];hs=[];used=set()
     for k,u in src:
-        if save(u,pid): ok=(k,u);break
-    rep[pid]=ok;print(pid,ok and ok[0]);time.sleep(.4)
+        if len(got)>=MAX: break
+        if u in used: continue
+        used.add(u);im=load(u)
+        if not im: continue
+        h=ahash(im)
+        if any(bin(h^x).count('1')<6 for x in hs): continue
+        hs.append(h);n=len(got);save(im,f'img/{pid}.jpg' if n==0 else f'img/{pid}-{n+1}.jpg');got.append(k)
+    print(pid,got,flush=True);return pid,got
+with ThreadPoolExecutor(6) as ex: rep=dict(ex.map(one,P))
 json.dump(rep,open('img/report.json','w'),indent=1,ensure_ascii=False)
-print('OK',sum(1 for v in rep.values() if v),'/',len(rep))
+print('OK',sum(1 for v in rep.values() if v),'/',len(rep),'photos',sum(len(v) for v in rep.values()))
