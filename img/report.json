@@ -288,10 +288,10 @@
   "bing"
  ],
  "nd-149": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "sasha": [
   "page",
@@ -420,7 +420,7 @@
   "bing"
  ],
  "celiane-blanc": [
-  "page",
+  "bing",
   "bing",
   "bing",
   "bing"
@@ -432,13 +432,13 @@
   "bing"
  ],
  "celiane-noir": [
-  "page",
+  "bing",
   "bing",
   "bing",
   "bing"
  ],
  "celiane-lum": [
-  "page",
+  "bing",
   "bing",
   "bing",
   "bing"
@@ -534,22 +534,22 @@
   "bing"
  ],
  "quimby": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "brigg": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "mayr": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "katiki": [
   "bing",
@@ -570,16 +570,16 @@
   "bing"
  ],
  "bilbrough": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "lisalie": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "inoxa": [
   "page",
@@ -588,16 +588,16 @@
   "bing"
  ],
  "gaz4": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "four71": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "velaire": [
   "bing",
@@ -618,10 +618,10 @@
   "bing"
  ],
  "hotte-blanc": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "hotte-inox": [
   "bing",
@@ -630,28 +630,28 @@
   "bing"
  ],
  "hotte-noire": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "hotte-chem-inox": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "hotte-link": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "pragma-haut": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "caisson-bas": [
   "bing",
@@ -660,10 +660,10 @@
   "bing"
  ],
  "tina": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "kitchenette": [
   "page",
@@ -672,10 +672,10 @@
   "bing"
  ],
  "cuisinette": [
-  "page",
-  "page",
-  "page",
-  "page"
+  "bing",
+  "bing",
+  "bing",
+  "bing"
  ],
  "air100": [
   "bing",
@@ -1001,8 +1001,18 @@
   "bing",
   "bing"
  ],
- "relax": [],
- "relax-elec": [],
+ "relax": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
+ "relax-elec": [
+  "bing",
+  "bing",
+  "bing",
+  "bing"
+ ],
  "hs5": [
   "bing",
   "bing",
