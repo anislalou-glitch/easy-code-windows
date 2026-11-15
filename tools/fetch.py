@@ -42,6 +42,14 @@ def bing(q):
     if not r: return []
     t=html.unescape(r.text)
     return re.findall(r'"murl":"(https?://[^"]+)"',t)[:10]
+def yandex(q):
+    r=get('https://yandex.com/images/search?text='+urllib.parse.quote(q))
+    if not r: return []
+    return re.findall(r'"origUrl":"(https?://[^"]+)"',r.text.replace('&quot;','"'))[:10]
+def brave(q):
+    r=get('https://search.brave.com/images?q='+urllib.parse.quote(q))
+    if not r: return []
+    return re.findall(r'src:"(https://imgs\.search\.brave\.com/[^"]+)"',r.text)[:10]
 def ddg(q):
     r=get('https://duckduckgo.com/?ia=images&iax=images&q='+urllib.parse.quote(q))
     if not r: return []
@@ -71,8 +79,12 @@ def one(p):
     q=(ONLY or {}).get(pid) or (name+' '+brand).strip()
     src=[('page',u) for u in page_imgs(p['url'])]
     if brand=='IKEA' or 'ikea' in p['url']: src+=[('ikea',u) for u in ikea(' '.join(name.split(' ')[:4]))]
-    b=bing(q); src+=[('bing',u) for u in b]
-    if len(src)<MAX: src+=[('ddg',u) for u in ddg(q)]
+    b=bing(q)
+    if not b: time.sleep(4); b=bing(q)
+    src+=[('bing',u) for u in b]
+    if len(src)<MAX: src+=[('yandex',u) for u in yandex(q)]
+    if len(src)<MAX: src+=[('brave',u) for u in brave(q)]
+    time.sleep(1.5)
     got=[];hs=[];used=set()
     for k,u in src:
         if len(got)>=MAX: break
@@ -83,7 +95,7 @@ def one(p):
         if any(bin(h^x).count('1')<6 for x in hs): continue
         hs.append(h);n=len(got);save(im,f'img/{pid}.jpg' if n==0 else f'img/{pid}-{n+1}.jpg');got.append(k)
     print(pid,got,flush=True);return pid,got
-with ThreadPoolExecutor(6) as ex: rep=dict(ex.map(one,P))
+with ThreadPoolExecutor(2) as ex: rep=dict(ex.map(one,P))
 old=json.load(open('img/report.json')) if ONLY and os.path.exists('img/report.json') else {}
 old.update(rep);rep=old
 json.dump(rep,open('img/report.json','w'),indent=1,ensure_ascii=False)
