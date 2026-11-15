@@ -1,0 +1,1730 @@
+[
+{
+"f": "th/japandi-chambre",
+"q": [
+"japandi bedroom interior",
+"chambre japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-chambre",
+"vq": [
+"chambre japandi mur cloud dancer",
+"chambre japandi mur lin",
+"chambre japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-salon",
+"q": [
+"japandi living room interior",
+"salon japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-salon",
+"vq": [
+"salon japandi mur cloud dancer",
+"salon japandi mur lin",
+"salon japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-cuisine",
+"q": [
+"japandi kitchen interior",
+"cuisine japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-cuisine",
+"vq": [
+"cuisine japandi mur cloud dancer",
+"cuisine japandi mur lin",
+"cuisine japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-sdb",
+"q": [
+"japandi bathroom interior",
+"salle de bain japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-sdb",
+"vq": [
+"salle de bain japandi mur cloud dancer",
+"salle de bain japandi mur lin",
+"salle de bain japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-bureau",
+"q": [
+"japandi home office interior",
+"bureau japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-bureau",
+"vq": [
+"bureau japandi mur cloud dancer",
+"bureau japandi mur lin",
+"bureau japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-toilettes",
+"q": [
+"japandi toilet room interior",
+"toilettes wc japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-toilettes",
+"vq": [
+"toilettes wc japandi mur cloud dancer",
+"toilettes wc japandi mur lin",
+"toilettes wc japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-entree",
+"q": [
+"japandi entryway hallway interior",
+"entrée japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-entree",
+"vq": [
+"entrée japandi mur cloud dancer",
+"entrée japandi mur lin",
+"entrée japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-dressing",
+"q": [
+"japandi walk-in closet interior",
+"dressing japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-dressing",
+"vq": [
+"dressing japandi mur cloud dancer",
+"dressing japandi mur lin",
+"dressing japandi mur sauge"
+]
+},
+{
+"f": "th/japandi-loisir",
+"q": [
+"japandi game room interior",
+"salle de jeux japandi déco"
+],
+"n": 6
+},
+{
+"f": "v/japandi-loisir",
+"vq": [
+"salle de jeux japandi mur cloud dancer",
+"salle de jeux japandi mur lin",
+"salle de jeux japandi mur sauge"
+]
+},
+{
+"f": "th/oldmoney-chambre",
+"q": [
+"old money bedroom interior",
+"chambre old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-chambre",
+"vq": [
+"chambre old money mur crème",
+"chambre old money mur vert anglais",
+"chambre old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-salon",
+"q": [
+"old money living room interior",
+"salon old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-salon",
+"vq": [
+"salon old money mur crème",
+"salon old money mur vert anglais",
+"salon old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-cuisine",
+"q": [
+"old money kitchen interior",
+"cuisine old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-cuisine",
+"vq": [
+"cuisine old money mur crème",
+"cuisine old money mur vert anglais",
+"cuisine old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-sdb",
+"q": [
+"old money bathroom interior",
+"salle de bain old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-sdb",
+"vq": [
+"salle de bain old money mur crème",
+"salle de bain old money mur vert anglais",
+"salle de bain old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-bureau",
+"q": [
+"old money home office interior",
+"bureau old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-bureau",
+"vq": [
+"bureau old money mur crème",
+"bureau old money mur vert anglais",
+"bureau old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-toilettes",
+"q": [
+"old money toilet room interior",
+"toilettes wc old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-toilettes",
+"vq": [
+"toilettes wc old money mur crème",
+"toilettes wc old money mur vert anglais",
+"toilettes wc old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-entree",
+"q": [
+"old money entryway hallway interior",
+"entrée old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-entree",
+"vq": [
+"entrée old money mur crème",
+"entrée old money mur vert anglais",
+"entrée old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-dressing",
+"q": [
+"old money walk-in closet interior",
+"dressing old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-dressing",
+"vq": [
+"dressing old money mur crème",
+"dressing old money mur vert anglais",
+"dressing old money mur marine"
+]
+},
+{
+"f": "th/oldmoney-loisir",
+"q": [
+"old money game room interior",
+"salle de jeux old money déco"
+],
+"n": 6
+},
+{
+"f": "v/oldmoney-loisir",
+"vq": [
+"salle de jeux old money mur crème",
+"salle de jeux old money mur vert anglais",
+"salle de jeux old money mur marine"
+]
+},
+{
+"f": "th/bois-chambre",
+"q": [
+"dark walnut wood bedroom interior",
+"chambre bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-chambre",
+"vq": [
+"chambre bois foncé noyer mur havane",
+"chambre bois foncé noyer mur crème + noyer",
+"chambre bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-salon",
+"q": [
+"dark walnut wood living room interior",
+"salon bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-salon",
+"vq": [
+"salon bois foncé noyer mur havane",
+"salon bois foncé noyer mur crème + noyer",
+"salon bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-cuisine",
+"q": [
+"dark walnut wood kitchen interior",
+"cuisine bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-cuisine",
+"vq": [
+"cuisine bois foncé noyer mur havane",
+"cuisine bois foncé noyer mur crème + noyer",
+"cuisine bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-sdb",
+"q": [
+"dark walnut wood bathroom interior",
+"salle de bain bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-sdb",
+"vq": [
+"salle de bain bois foncé noyer mur havane",
+"salle de bain bois foncé noyer mur crème + noyer",
+"salle de bain bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-bureau",
+"q": [
+"dark walnut wood home office interior",
+"bureau bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-bureau",
+"vq": [
+"bureau bois foncé noyer mur havane",
+"bureau bois foncé noyer mur crème + noyer",
+"bureau bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-toilettes",
+"q": [
+"dark walnut wood toilet room interior",
+"toilettes wc bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-toilettes",
+"vq": [
+"toilettes wc bois foncé noyer mur havane",
+"toilettes wc bois foncé noyer mur crème + noyer",
+"toilettes wc bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-entree",
+"q": [
+"dark walnut wood entryway hallway interior",
+"entrée bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-entree",
+"vq": [
+"entrée bois foncé noyer mur havane",
+"entrée bois foncé noyer mur crème + noyer",
+"entrée bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-dressing",
+"q": [
+"dark walnut wood walk-in closet interior",
+"dressing bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-dressing",
+"vq": [
+"dressing bois foncé noyer mur havane",
+"dressing bois foncé noyer mur crème + noyer",
+"dressing bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/bois-loisir",
+"q": [
+"dark walnut wood game room interior",
+"salle de jeux bois foncé noyer déco"
+],
+"n": 6
+},
+{
+"f": "v/bois-loisir",
+"vq": [
+"salle de jeux bois foncé noyer mur havane",
+"salle de jeux bois foncé noyer mur crème + noyer",
+"salle de jeux bois foncé noyer mur chocolat"
+]
+},
+{
+"f": "th/minimal-chambre",
+"q": [
+"soft minimalist bedroom interior",
+"chambre minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-chambre",
+"vq": [
+"chambre minimaliste mur blanc",
+"chambre minimaliste mur greige",
+"chambre minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-salon",
+"q": [
+"soft minimalist living room interior",
+"salon minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-salon",
+"vq": [
+"salon minimaliste mur blanc",
+"salon minimaliste mur greige",
+"salon minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-cuisine",
+"q": [
+"soft minimalist kitchen interior",
+"cuisine minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-cuisine",
+"vq": [
+"cuisine minimaliste mur blanc",
+"cuisine minimaliste mur greige",
+"cuisine minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-sdb",
+"q": [
+"soft minimalist bathroom interior",
+"salle de bain minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-sdb",
+"vq": [
+"salle de bain minimaliste mur blanc",
+"salle de bain minimaliste mur greige",
+"salle de bain minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-bureau",
+"q": [
+"soft minimalist home office interior",
+"bureau minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-bureau",
+"vq": [
+"bureau minimaliste mur blanc",
+"bureau minimaliste mur greige",
+"bureau minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-toilettes",
+"q": [
+"soft minimalist toilet room interior",
+"toilettes wc minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-toilettes",
+"vq": [
+"toilettes wc minimaliste mur blanc",
+"toilettes wc minimaliste mur greige",
+"toilettes wc minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-entree",
+"q": [
+"soft minimalist entryway hallway interior",
+"entrée minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-entree",
+"vq": [
+"entrée minimaliste mur blanc",
+"entrée minimaliste mur greige",
+"entrée minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-dressing",
+"q": [
+"soft minimalist walk-in closet interior",
+"dressing minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-dressing",
+"vq": [
+"dressing minimaliste mur blanc",
+"dressing minimaliste mur greige",
+"dressing minimaliste mur gris perle"
+]
+},
+{
+"f": "th/minimal-loisir",
+"q": [
+"soft minimalist game room interior",
+"salle de jeux minimaliste déco"
+],
+"n": 6
+},
+{
+"f": "v/minimal-loisir",
+"vq": [
+"salle de jeux minimaliste mur blanc",
+"salle de jeux minimaliste mur greige",
+"salle de jeux minimaliste mur gris perle"
+]
+},
+{
+"f": "th/wabisabi-chambre",
+"q": [
+"wabi sabi bedroom interior",
+"chambre wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-chambre",
+"vq": [
+"chambre wabi sabi mur argile",
+"chambre wabi sabi mur pierre",
+"chambre wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-salon",
+"q": [
+"wabi sabi living room interior",
+"salon wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-salon",
+"vq": [
+"salon wabi sabi mur argile",
+"salon wabi sabi mur pierre",
+"salon wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-cuisine",
+"q": [
+"wabi sabi kitchen interior",
+"cuisine wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-cuisine",
+"vq": [
+"cuisine wabi sabi mur argile",
+"cuisine wabi sabi mur pierre",
+"cuisine wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-sdb",
+"q": [
+"wabi sabi bathroom interior",
+"salle de bain wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-sdb",
+"vq": [
+"salle de bain wabi sabi mur argile",
+"salle de bain wabi sabi mur pierre",
+"salle de bain wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-bureau",
+"q": [
+"wabi sabi home office interior",
+"bureau wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-bureau",
+"vq": [
+"bureau wabi sabi mur argile",
+"bureau wabi sabi mur pierre",
+"bureau wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-toilettes",
+"q": [
+"wabi sabi toilet room interior",
+"toilettes wc wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-toilettes",
+"vq": [
+"toilettes wc wabi sabi mur argile",
+"toilettes wc wabi sabi mur pierre",
+"toilettes wc wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-entree",
+"q": [
+"wabi sabi entryway hallway interior",
+"entrée wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-entree",
+"vq": [
+"entrée wabi sabi mur argile",
+"entrée wabi sabi mur pierre",
+"entrée wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-dressing",
+"q": [
+"wabi sabi walk-in closet interior",
+"dressing wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-dressing",
+"vq": [
+"dressing wabi sabi mur argile",
+"dressing wabi sabi mur pierre",
+"dressing wabi sabi mur sable"
+]
+},
+{
+"f": "th/wabisabi-loisir",
+"q": [
+"wabi sabi game room interior",
+"salle de jeux wabi sabi déco"
+],
+"n": 6
+},
+{
+"f": "v/wabisabi-loisir",
+"vq": [
+"salle de jeux wabi sabi mur argile",
+"salle de jeux wabi sabi mur pierre",
+"salle de jeux wabi sabi mur sable"
+]
+},
+{
+"f": "th/deco-chambre",
+"q": [
+"modern art deco bedroom interior",
+"chambre art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-chambre",
+"vq": [
+"chambre art déco mur vert émeraude",
+"chambre art déco mur bordeaux",
+"chambre art déco mur nuit"
+]
+},
+{
+"f": "th/deco-salon",
+"q": [
+"modern art deco living room interior",
+"salon art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-salon",
+"vq": [
+"salon art déco mur vert émeraude",
+"salon art déco mur bordeaux",
+"salon art déco mur nuit"
+]
+},
+{
+"f": "th/deco-cuisine",
+"q": [
+"modern art deco kitchen interior",
+"cuisine art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-cuisine",
+"vq": [
+"cuisine art déco mur vert émeraude",
+"cuisine art déco mur bordeaux",
+"cuisine art déco mur nuit"
+]
+},
+{
+"f": "th/deco-sdb",
+"q": [
+"modern art deco bathroom interior",
+"salle de bain art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-sdb",
+"vq": [
+"salle de bain art déco mur vert émeraude",
+"salle de bain art déco mur bordeaux",
+"salle de bain art déco mur nuit"
+]
+},
+{
+"f": "th/deco-bureau",
+"q": [
+"modern art deco home office interior",
+"bureau art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-bureau",
+"vq": [
+"bureau art déco mur vert émeraude",
+"bureau art déco mur bordeaux",
+"bureau art déco mur nuit"
+]
+},
+{
+"f": "th/deco-toilettes",
+"q": [
+"modern art deco toilet room interior",
+"toilettes wc art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-toilettes",
+"vq": [
+"toilettes wc art déco mur vert émeraude",
+"toilettes wc art déco mur bordeaux",
+"toilettes wc art déco mur nuit"
+]
+},
+{
+"f": "th/deco-entree",
+"q": [
+"modern art deco entryway hallway interior",
+"entrée art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-entree",
+"vq": [
+"entrée art déco mur vert émeraude",
+"entrée art déco mur bordeaux",
+"entrée art déco mur nuit"
+]
+},
+{
+"f": "th/deco-dressing",
+"q": [
+"modern art deco walk-in closet interior",
+"dressing art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-dressing",
+"vq": [
+"dressing art déco mur vert émeraude",
+"dressing art déco mur bordeaux",
+"dressing art déco mur nuit"
+]
+},
+{
+"f": "th/deco-loisir",
+"q": [
+"modern art deco game room interior",
+"salle de jeux art déco déco"
+],
+"n": 6
+},
+{
+"f": "v/deco-loisir",
+"vq": [
+"salle de jeux art déco mur vert émeraude",
+"salle de jeux art déco mur bordeaux",
+"salle de jeux art déco mur nuit"
+]
+},
+{
+"f": "th/bio-chambre",
+"q": [
+"biophilic plants bedroom interior",
+"chambre biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-chambre",
+"vq": [
+"chambre biophilique plantes mur vert sauge",
+"chambre biophilique plantes mur olive",
+"chambre biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-salon",
+"q": [
+"biophilic plants living room interior",
+"salon biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-salon",
+"vq": [
+"salon biophilique plantes mur vert sauge",
+"salon biophilique plantes mur olive",
+"salon biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-cuisine",
+"q": [
+"biophilic plants kitchen interior",
+"cuisine biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-cuisine",
+"vq": [
+"cuisine biophilique plantes mur vert sauge",
+"cuisine biophilique plantes mur olive",
+"cuisine biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-sdb",
+"q": [
+"biophilic plants bathroom interior",
+"salle de bain biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-sdb",
+"vq": [
+"salle de bain biophilique plantes mur vert sauge",
+"salle de bain biophilique plantes mur olive",
+"salle de bain biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-bureau",
+"q": [
+"biophilic plants home office interior",
+"bureau biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-bureau",
+"vq": [
+"bureau biophilique plantes mur vert sauge",
+"bureau biophilique plantes mur olive",
+"bureau biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-toilettes",
+"q": [
+"biophilic plants toilet room interior",
+"toilettes wc biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-toilettes",
+"vq": [
+"toilettes wc biophilique plantes mur vert sauge",
+"toilettes wc biophilique plantes mur olive",
+"toilettes wc biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-entree",
+"q": [
+"biophilic plants entryway hallway interior",
+"entrée biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-entree",
+"vq": [
+"entrée biophilique plantes mur vert sauge",
+"entrée biophilique plantes mur olive",
+"entrée biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-dressing",
+"q": [
+"biophilic plants walk-in closet interior",
+"dressing biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-dressing",
+"vq": [
+"dressing biophilique plantes mur vert sauge",
+"dressing biophilique plantes mur olive",
+"dressing biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/bio-loisir",
+"q": [
+"biophilic plants game room interior",
+"salle de jeux biophilique plantes déco"
+],
+"n": 6
+},
+{
+"f": "v/bio-loisir",
+"vq": [
+"salle de jeux biophilique plantes mur vert sauge",
+"salle de jeux biophilique plantes mur olive",
+"salle de jeux biophilique plantes mur blanc + plantes"
+]
+},
+{
+"f": "th/drench-chambre",
+"q": [
+"color drenching bedroom interior",
+"chambre color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-chambre",
+"vq": [
+"chambre color drenching mur terracotta",
+"chambre color drenching mur bleu paon",
+"chambre color drenching mur prune"
+]
+},
+{
+"f": "th/drench-salon",
+"q": [
+"color drenching living room interior",
+"salon color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-salon",
+"vq": [
+"salon color drenching mur terracotta",
+"salon color drenching mur bleu paon",
+"salon color drenching mur prune"
+]
+},
+{
+"f": "th/drench-cuisine",
+"q": [
+"color drenching kitchen interior",
+"cuisine color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-cuisine",
+"vq": [
+"cuisine color drenching mur terracotta",
+"cuisine color drenching mur bleu paon",
+"cuisine color drenching mur prune"
+]
+},
+{
+"f": "th/drench-sdb",
+"q": [
+"color drenching bathroom interior",
+"salle de bain color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-sdb",
+"vq": [
+"salle de bain color drenching mur terracotta",
+"salle de bain color drenching mur bleu paon",
+"salle de bain color drenching mur prune"
+]
+},
+{
+"f": "th/drench-bureau",
+"q": [
+"color drenching home office interior",
+"bureau color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-bureau",
+"vq": [
+"bureau color drenching mur terracotta",
+"bureau color drenching mur bleu paon",
+"bureau color drenching mur prune"
+]
+},
+{
+"f": "th/drench-toilettes",
+"q": [
+"color drenching toilet room interior",
+"toilettes wc color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-toilettes",
+"vq": [
+"toilettes wc color drenching mur terracotta",
+"toilettes wc color drenching mur bleu paon",
+"toilettes wc color drenching mur prune"
+]
+},
+{
+"f": "th/drench-entree",
+"q": [
+"color drenching entryway hallway interior",
+"entrée color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-entree",
+"vq": [
+"entrée color drenching mur terracotta",
+"entrée color drenching mur bleu paon",
+"entrée color drenching mur prune"
+]
+},
+{
+"f": "th/drench-dressing",
+"q": [
+"color drenching walk-in closet interior",
+"dressing color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-dressing",
+"vq": [
+"dressing color drenching mur terracotta",
+"dressing color drenching mur bleu paon",
+"dressing color drenching mur prune"
+]
+},
+{
+"f": "th/drench-loisir",
+"q": [
+"color drenching game room interior",
+"salle de jeux color drenching déco"
+],
+"n": 6
+},
+{
+"f": "v/drench-loisir",
+"vq": [
+"salle de jeux color drenching mur terracotta",
+"salle de jeux color drenching mur bleu paon",
+"salle de jeux color drenching mur prune"
+]
+},
+{
+"f": "th/cottage-chambre",
+"q": [
+"cottagecore bedroom interior",
+"chambre cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-chambre",
+"vq": [
+"chambre cottagecore mur rose poudré",
+"chambre cottagecore mur vert tendre",
+"chambre cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-salon",
+"q": [
+"cottagecore living room interior",
+"salon cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-salon",
+"vq": [
+"salon cottagecore mur rose poudré",
+"salon cottagecore mur vert tendre",
+"salon cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-cuisine",
+"q": [
+"cottagecore kitchen interior",
+"cuisine cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-cuisine",
+"vq": [
+"cuisine cottagecore mur rose poudré",
+"cuisine cottagecore mur vert tendre",
+"cuisine cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-sdb",
+"q": [
+"cottagecore bathroom interior",
+"salle de bain cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-sdb",
+"vq": [
+"salle de bain cottagecore mur rose poudré",
+"salle de bain cottagecore mur vert tendre",
+"salle de bain cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-bureau",
+"q": [
+"cottagecore home office interior",
+"bureau cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-bureau",
+"vq": [
+"bureau cottagecore mur rose poudré",
+"bureau cottagecore mur vert tendre",
+"bureau cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-toilettes",
+"q": [
+"cottagecore toilet room interior",
+"toilettes wc cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-toilettes",
+"vq": [
+"toilettes wc cottagecore mur rose poudré",
+"toilettes wc cottagecore mur vert tendre",
+"toilettes wc cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-entree",
+"q": [
+"cottagecore entryway hallway interior",
+"entrée cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-entree",
+"vq": [
+"entrée cottagecore mur rose poudré",
+"entrée cottagecore mur vert tendre",
+"entrée cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-dressing",
+"q": [
+"cottagecore walk-in closet interior",
+"dressing cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-dressing",
+"vq": [
+"dressing cottagecore mur rose poudré",
+"dressing cottagecore mur vert tendre",
+"dressing cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/cottage-loisir",
+"q": [
+"cottagecore game room interior",
+"salle de jeux cottagecore déco"
+],
+"n": 6
+},
+{
+"f": "v/cottage-loisir",
+"vq": [
+"salle de jeux cottagecore mur rose poudré",
+"salle de jeux cottagecore mur vert tendre",
+"salle de jeux cottagecore mur beurre frais"
+]
+},
+{
+"f": "th/neon-chambre",
+"q": [
+"neon gaming setup bedroom interior",
+"chambre gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-chambre",
+"vq": [
+"chambre gaming néon mur nuit",
+"chambre gaming néon mur anthracite",
+"chambre gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-salon",
+"q": [
+"neon gaming setup living room interior",
+"salon gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-salon",
+"vq": [
+"salon gaming néon mur nuit",
+"salon gaming néon mur anthracite",
+"salon gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-cuisine",
+"q": [
+"neon gaming setup kitchen interior",
+"cuisine gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-cuisine",
+"vq": [
+"cuisine gaming néon mur nuit",
+"cuisine gaming néon mur anthracite",
+"cuisine gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-sdb",
+"q": [
+"neon gaming setup bathroom interior",
+"salle de bain gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-sdb",
+"vq": [
+"salle de bain gaming néon mur nuit",
+"salle de bain gaming néon mur anthracite",
+"salle de bain gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-bureau",
+"q": [
+"neon gaming setup home office interior",
+"bureau gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-bureau",
+"vq": [
+"bureau gaming néon mur nuit",
+"bureau gaming néon mur anthracite",
+"bureau gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-toilettes",
+"q": [
+"neon gaming setup toilet room interior",
+"toilettes wc gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-toilettes",
+"vq": [
+"toilettes wc gaming néon mur nuit",
+"toilettes wc gaming néon mur anthracite",
+"toilettes wc gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-entree",
+"q": [
+"neon gaming setup entryway hallway interior",
+"entrée gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-entree",
+"vq": [
+"entrée gaming néon mur nuit",
+"entrée gaming néon mur anthracite",
+"entrée gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-dressing",
+"q": [
+"neon gaming setup walk-in closet interior",
+"dressing gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-dressing",
+"vq": [
+"dressing gaming néon mur nuit",
+"dressing gaming néon mur anthracite",
+"dressing gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/neon-loisir",
+"q": [
+"neon gaming setup game room interior",
+"salle de jeux gaming néon déco"
+],
+"n": 6
+},
+{
+"f": "v/neon-loisir",
+"vq": [
+"salle de jeux gaming néon mur nuit",
+"salle de jeux gaming néon mur anthracite",
+"salle de jeux gaming néon mur bleu nuit"
+]
+},
+{
+"f": "th/salle-chambre",
+"q": [
+"dark home cinema bedroom interior",
+"chambre home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-chambre",
+"vq": [
+"chambre home cinéma mur bordeaux",
+"chambre home cinéma mur noir velours",
+"chambre home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-salon",
+"q": [
+"dark home cinema living room interior",
+"salon home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-salon",
+"vq": [
+"salon home cinéma mur bordeaux",
+"salon home cinéma mur noir velours",
+"salon home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-cuisine",
+"q": [
+"dark home cinema kitchen interior",
+"cuisine home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-cuisine",
+"vq": [
+"cuisine home cinéma mur bordeaux",
+"cuisine home cinéma mur noir velours",
+"cuisine home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-sdb",
+"q": [
+"dark home cinema bathroom interior",
+"salle de bain home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-sdb",
+"vq": [
+"salle de bain home cinéma mur bordeaux",
+"salle de bain home cinéma mur noir velours",
+"salle de bain home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-bureau",
+"q": [
+"dark home cinema home office interior",
+"bureau home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-bureau",
+"vq": [
+"bureau home cinéma mur bordeaux",
+"bureau home cinéma mur noir velours",
+"bureau home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-toilettes",
+"q": [
+"dark home cinema toilet room interior",
+"toilettes wc home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-toilettes",
+"vq": [
+"toilettes wc home cinéma mur bordeaux",
+"toilettes wc home cinéma mur noir velours",
+"toilettes wc home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-entree",
+"q": [
+"dark home cinema entryway hallway interior",
+"entrée home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-entree",
+"vq": [
+"entrée home cinéma mur bordeaux",
+"entrée home cinéma mur noir velours",
+"entrée home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-dressing",
+"q": [
+"dark home cinema walk-in closet interior",
+"dressing home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-dressing",
+"vq": [
+"dressing home cinéma mur bordeaux",
+"dressing home cinéma mur noir velours",
+"dressing home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/salle-loisir",
+"q": [
+"dark home cinema game room interior",
+"salle de jeux home cinéma déco"
+],
+"n": 6
+},
+{
+"f": "v/salle-loisir",
+"vq": [
+"salle de jeux home cinéma mur bordeaux",
+"salle de jeux home cinéma mur noir velours",
+"salle de jeux home cinéma mur bleu nuit"
+]
+},
+{
+"f": "th/indus-chambre",
+"q": [
+"industrial loft bedroom interior",
+"chambre industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-chambre",
+"vq": [
+"chambre industriel loft mur gris poivre",
+"chambre industriel loft mur béton clair",
+"chambre industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-salon",
+"q": [
+"industrial loft living room interior",
+"salon industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-salon",
+"vq": [
+"salon industriel loft mur gris poivre",
+"salon industriel loft mur béton clair",
+"salon industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-cuisine",
+"q": [
+"industrial loft kitchen interior",
+"cuisine industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-cuisine",
+"vq": [
+"cuisine industriel loft mur gris poivre",
+"cuisine industriel loft mur béton clair",
+"cuisine industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-sdb",
+"q": [
+"industrial loft bathroom interior",
+"salle de bain industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-sdb",
+"vq": [
+"salle de bain industriel loft mur gris poivre",
+"salle de bain industriel loft mur béton clair",
+"salle de bain industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-bureau",
+"q": [
+"industrial loft home office interior",
+"bureau industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-bureau",
+"vq": [
+"bureau industriel loft mur gris poivre",
+"bureau industriel loft mur béton clair",
+"bureau industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-toilettes",
+"q": [
+"industrial loft toilet room interior",
+"toilettes wc industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-toilettes",
+"vq": [
+"toilettes wc industriel loft mur gris poivre",
+"toilettes wc industriel loft mur béton clair",
+"toilettes wc industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-entree",
+"q": [
+"industrial loft entryway hallway interior",
+"entrée industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-entree",
+"vq": [
+"entrée industriel loft mur gris poivre",
+"entrée industriel loft mur béton clair",
+"entrée industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-dressing",
+"q": [
+"industrial loft walk-in closet interior",
+"dressing industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-dressing",
+"vq": [
+"dressing industriel loft mur gris poivre",
+"dressing industriel loft mur béton clair",
+"dressing industriel loft mur noir"
+]
+},
+{
+"f": "th/indus-loisir",
+"q": [
+"industrial loft game room interior",
+"salle de jeux industriel loft déco"
+],
+"n": 6
+},
+{
+"f": "v/indus-loisir",
+"vq": [
+"salle de jeux industriel loft mur gris poivre",
+"salle de jeux industriel loft mur béton clair",
+"salle de jeux industriel loft mur noir"
+]
+}
+]
